@@ -132,7 +132,7 @@ const RoadmapFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
 
-  // Set default initial view zoomed in to see at least 3 tiles clearly readable
+  // Set default initial view zoomed in to see initial concept tiles clearly readable without overlay clipping
   React.useEffect(() => {
     const timer = setTimeout(() => {
       fitView({
@@ -143,7 +143,7 @@ const RoadmapFlow = () => {
           { id: 'key-roles' }
         ],
         duration: 400,
-        padding: 0.25,
+        padding: 0.5,
       });
     }, 150);
     return () => clearTimeout(timer);
