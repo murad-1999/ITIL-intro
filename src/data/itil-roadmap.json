@@ -1,0 +1,786 @@
+{
+  "nodes": [
+    {
+      "id": "value-co-creation",
+      "title": "Value & Value Co-creation",
+      "category": "concepts",
+      "nodeType": "concept_card",
+      "summary": "Value is not just delivered; it is co-created through active collaboration between service providers and consumers.",
+      "contentMarkdown": "# Value & Value Co-creation\n\nValue is the perceived benefits, usefulness, and importance of something. Under ITIL 4, value is co-created via an active relationship between:\n\n- **Service Provider:** Authorizes and delivers the service.\n- **Service Consumer:** Receives and consumes the service.\n\n### Value Co-creation\nRather than a one-way transfer, value is established collaboratively. Providers must understand consumer needs, and consumers must actively participate in defining and feedback cycles.",
+      "prerequisites": [],
+      "resources": [
+        {
+          "id": "doc-concepts-1",
+          "title": "ITIL 4 Key Concepts Guide",
+          "url": "https://www.axelos.com/resource-hub/blog/key-concepts-of-service-management",
+          "type": "documentation"
+        }
+      ],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "service-relationships",
+      "title": "Service Relationships",
+      "category": "concepts",
+      "nodeType": "concept_card",
+      "summary": "The model of service provision, consumption, and relationship management.",
+      "contentMarkdown": "# Service Relationships\n\nTo co-create value, organizations take on provider and consumer roles. The relationship consists of:\n\n- **Service Provision:** Activities performed by an organization to provide services (e.g., resource management, access provisioning).\n- **Service Consumption:** Activities performed by an organization to consume services (e.g., resource usage, requesting actions).\n- **Service Relationship Management:** Joint activities performed by service providers and service consumers to ensure continual value co-creation.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "utility-warranty",
+      "title": "Utility vs. Warranty",
+      "category": "concepts",
+      "nodeType": "concept_card",
+      "summary": "Utility is 'fit for purpose' (functionality), while Warranty is 'fit for use' (assurance). Both are needed for value.",
+      "contentMarkdown": "# Utility vs. Warranty\n\n- **Utility (Fit for purpose):** The functionality offered by a product or service to meet a particular need. It supports performance or removes constraints.\n- **Warranty (Fit for use):** Assurance that a product or service will meet agreed requirements. It covers availability, capacity, continuity, and security.\n\n*A service must have both Utility and Warranty to create value.*",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "key-roles",
+      "title": "Key Roles",
+      "category": "concepts",
+      "nodeType": "concept_card",
+      "summary": "Defining Customer, User, and Sponsor roles in service consumption.",
+      "contentMarkdown": "# Key Service Roles\n\nITIL 4 distinguishes between three key consumer roles:\n\n- **Customer:** A person who defines the requirements for a service and takes responsibility for the outcomes of service consumption.\n- **User:** A person who uses services.\n- **Sponsor:** A person who authorizes budget for service consumption.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "cost-risk",
+      "title": "Cost & Risk",
+      "category": "concepts",
+      "nodeType": "concept_card",
+      "summary": "Understanding costs and risks imposed and removed by services.",
+      "contentMarkdown": "# Costs & Risks of Services\n\nServices are vehicles for delivering value by facilitating outcomes consumers want to achieve without taking on specific costs and risks:\n\n- **Cost:** Amount of money spent on a specific activity or resource. Services remove consumer costs but impose new costs (subscription, setup).\n- **Risk:** Possible events that could cause harm, loss, or make it more difficult to achieve objectives. Services mitigate consumer risks but introduce provider-side risks.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "orgs-people",
+      "title": "Organizations & People",
+      "category": "dimensions",
+      "nodeType": "concept_card",
+      "summary": "The first dimension focusing on structure, culture, staffing, and roles.",
+      "contentMarkdown": "# Organizations & People\n\nThis dimension covers:\n\n- Formal organizational structures.\n- Culture, core values, and trust.\n- Required staffing levels and skills.\n- Defined roles and responsibilities.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "info-tech",
+      "title": "Information & Technology",
+      "category": "dimensions",
+      "nodeType": "concept_card",
+      "summary": "The second dimension covering information, knowledge, and technology assets.",
+      "contentMarkdown": "# Information & Technology\n\nThis dimension covers the technology and information assets required for service management:\n\n- Technologies (cloud, databases, AI, workflow tools).\n- Information, data protection, and knowledge assets.\n- Relationships between different components of the SVS.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "partners-suppliers",
+      "title": "Partners & Suppliers",
+      "category": "dimensions",
+      "nodeType": "concept_card",
+      "summary": "The third dimension focusing on contracts, integrations, and third parties.",
+      "contentMarkdown": "# Partners & Suppliers\n\nThis dimension focuses on the relationships with other organizations involved in design, development, and delivery of services:\n\n- **Partners:** Share common goals and risks (co-creation).\n- **Suppliers:** Deliver goods/services under contracts.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "value-streams-processes",
+      "title": "Value Streams & Processes",
+      "category": "dimensions",
+      "nodeType": "concept_card",
+      "summary": "The fourth dimension defining activities, workflows, and procedures.",
+      "contentMarkdown": "# Value Streams & Processes\n\nThis dimension defines the activities, workflows, controls, and procedures needed to achieve objectives:\n\n- **Value Streams:** Step-by-step journeys to map SVS activities from demand to value.\n- **Processes:** Set of interrelated activities that transform inputs into outputs.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "pestle-hub",
+      "title": "PESTLE Constraint Hub",
+      "category": "dimensions",
+      "nodeType": "cycle_hub",
+      "summary": "External constraints and factors acting upon the 4 Dimensions.",
+      "contentMarkdown": "# PESTLE External Factors\n\nThese external factors constrain or influence the 4 Dimensions of Service Management:\n\n- **P**olitical factors\n- **E**conomic factors\n- **S**ocial factors\n- **T**echnological factors\n- **L**egal factors\n- **E**nvironmental factors",
+      "prerequisites": ["orgs-people", "info-tech", "partners-suppliers", "value-streams-processes"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "focus-on-value",
+      "title": "Focus on Value",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "Everything must link back, directly or indirectly, to value for the consumers.",
+      "contentMarkdown": "# Focus on Value\n\n- **Goal:** Every action and decision should be evaluated based on the value it co-creates for the customer, user, or sponsor.\n- **Actions:** Identify who the service consumer is and understand what constitutes value for them in their context.",
+      "prerequisites": ["value-co-creation"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "start-where-you-are",
+      "title": "Start Where You Are",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "Do not start from scratch. Build upon existing services, systems, and processes.",
+      "contentMarkdown": "# Start Where You Are\n\n- **Goal:** Avoid discarding existing work to start fresh without prior investigation.\n- **Actions:** Measure and observe existing practices directly. Use objective metrics to understand current state capabilities.",
+      "prerequisites": ["focus-on-value"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "progress-iteratively-feedback",
+      "title": "Progress Iteratively with Feedback",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "Do not attempt everything at once. Use feedback loops to improve incrementally.",
+      "contentMarkdown": "# Progress Iteratively with Feedback\n\n- **Goal:** Divide major initiatives into manageable, execution-friendly increments.\n- **Actions:** Collect feedback before, during, and after each iteration to adjust direction.",
+      "prerequisites": ["start-where-you-are"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "collaborate-promote-visibility",
+      "title": "Collaborate & Promote Visibility",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "Work across silos and make progress open and visual to all stakeholders.",
+      "contentMarkdown": "# Collaborate & Promote Visibility\n\n- **Goal:** Break down organizational silos through open communications.\n- **Actions:** Share updates openly, make work visible (e.g., Kanban boards), and involve key stakeholders early.",
+      "prerequisites": ["progress-iteratively-feedback"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "think-work-holistically",
+      "title": "Think & Work Holistically",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "No service, component, or process stands alone. Consider the entire SVS ecosystem.",
+      "contentMarkdown": "# Think & Work Holistically\n\n- **Goal:** Understand the end-to-end integration of activities.\n- **Actions:** Consider the four dimensions and verify that changes do not create unintended side effects elsewhere.",
+      "prerequisites": ["collaborate-promote-visibility"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "keep-it-simple-practical",
+      "title": "Keep It Simple & Practical",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "Eliminate processes or steps that do not produce value.",
+      "contentMarkdown": "# Keep It Simple & Practical\n\n- **Goal:** Deliver minimum viable processes to achieve targets.\n- **Actions:** Use the least number of steps. If a process step does not create value or serve a regulatory purpose, eliminate it.",
+      "prerequisites": ["think-work-holistically"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "optimize-automate",
+      "title": "Optimize & Automate",
+      "category": "guiding_principles",
+      "nodeType": "concept_card",
+      "summary": "Maximize efficiency by optimizing resources and automating manual activities.",
+      "contentMarkdown": "# Optimize & Automate\n\n- **Goal:** Streamline manual processes and deploy tools to reduce human error.\n- **Actions:** Optimize the process *first* to remove waste, then apply automation to make it fast and repeatable.",
+      "prerequisites": ["keep-it-simple-practical"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "opportunity-demand",
+      "title": "Opportunity / Demand",
+      "category": "svs",
+      "nodeType": "process_gate",
+      "summary": "The initial inputs to the Service Value System (SVS).",
+      "contentMarkdown": "# Opportunity & Demand\n\nThese are the starting points for the Service Value System (SVS):\n\n- **Opportunity:** Options or possibilities to add value for stakeholders.\n- **Demand:** Need or desire for products and services from internal or external consumers.",
+      "prerequisites": [],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "governance",
+      "title": "Governance",
+      "category": "governance",
+      "nodeType": "process_gate",
+      "summary": "The SVS component that directs, evaluates, and monitors SVS activities.",
+      "contentMarkdown": "# Governance in the SVS\n\nGovernance enables organizations to align SVS operations with corporate strategy. Activities include:\n\n- **Evaluate:** Continually evaluate strategy and SVS performance.\n- **Direct:** Set priorities, policies, and direction for organizational change.\n- **Monitor:** Review execution against strategic direction.",
+      "prerequisites": ["opportunity-demand"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svc-engage",
+      "title": "SVC: Engage",
+      "category": "service_value_chain",
+      "nodeType": "process_gate",
+      "summary": "Service Value Chain activity to understand stakeholder needs and maintain transparency.",
+      "contentMarkdown": "# Service Value Chain: Engage\n\n- **Purpose:** Provide a good understanding of stakeholder needs, promote transparency, and maintain positive relationships.\n- **Key Inputs:** Demand, requests, incidents, and feedback from users and customers.",
+      "prerequisites": ["opportunity-demand"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svc-plan",
+      "title": "SVC: Plan",
+      "category": "service_value_chain",
+      "nodeType": "process_gate",
+      "summary": "Service Value Chain activity to define strategy, objectives, and direction.",
+      "contentMarkdown": "# Service Value Chain: Plan\n\n- **Purpose:** Ensure a shared understanding of the vision, current status, and improvement direction for all four dimensions.",
+      "prerequisites": ["governance", "svc-engage"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svc-design-transition",
+      "title": "SVC: Design & Transition",
+      "category": "service_value_chain",
+      "nodeType": "process_gate",
+      "summary": "Service Value Chain activity ensuring products meet stakeholder expectations for quality, cost, and time.",
+      "contentMarkdown": "# Service Value Chain: Design & Transition\n\n- **Purpose:** Ensure that products and services continually meet stakeholder expectations for quality, costs, and time-to-market.",
+      "prerequisites": ["svc-plan"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svc-obtain-build",
+      "title": "SVC: Obtain / Build",
+      "category": "service_value_chain",
+      "nodeType": "process_gate",
+      "summary": "Service Value Chain activity focusing on acquiring or building service components.",
+      "contentMarkdown": "# Service Value Chain: Obtain / Build\n\n- **Purpose:** Ensure service components are available when and where they are needed, and meet agreed specifications.",
+      "prerequisites": ["svc-design-transition"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svc-deliver-support",
+      "title": "SVC: Deliver & Support",
+      "category": "service_value_chain",
+      "nodeType": "process_gate",
+      "summary": "Service Value Chain activity to deliver and support services according to agreed specifications.",
+      "contentMarkdown": "# Service Value Chain: Deliver & Support\n\n- **Purpose:** Ensure services are delivered and supported according to agreed specifications and stakeholders' expectations.",
+      "prerequisites": ["svc-obtain-build"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svc-improve",
+      "title": "SVC: Improve",
+      "category": "service_value_chain",
+      "nodeType": "process_gate",
+      "summary": "Service Value Chain activity focusing on continual improvement of SVS components.",
+      "contentMarkdown": "# Service Value Chain: Improve\n\n- **Purpose:** Ensure continual improvement of products, services, and practices across all SVS activities and the 4 dimensions.",
+      "prerequisites": ["svc-deliver-support"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "continual-improvement-7steps",
+      "title": "Continual Improvement 7-Step Model",
+      "category": "service_value_chain",
+      "nodeType": "cycle_hub",
+      "summary": "The structured 7-step model to guide improvement initiatives.",
+      "contentMarkdown": "# Continual Improvement 7-Step Model\n\nThis workflow model guides improvement initiatives from inception to measurement:\n\n1. **What is the vision?** (Define goals, align with business strategy)\n2. **Where are we now?** (Baseline assessment)\n3. **Where do we want to be?** (Define target KPIs and milestones)\n4. **How do we get there?** (Formulate the improvement plan)\n5. **Take action** (Execute the improvement plan)\n6. **Did we get there?** (Measure and verify achievements against baseline)\n7. **How do we keep the momentum going?** (Embed changes, plan next iteration)",
+      "prerequisites": ["svc-improve"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "svs-value",
+      "title": "SVS Value Output",
+      "category": "svs",
+      "nodeType": "process_gate",
+      "summary": "The final outcome of SVS workflows: value co-creation.",
+      "contentMarkdown": "# SVS Value Output\n\nThe final output of SVS activities is value co-creation. SVS activities process demand to deliver successful products and services.",
+      "prerequisites": ["svc-improve", "continual-improvement-7steps"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "incident-management",
+      "title": "Incident Management",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "Restore normal service operation as quickly as possible to minimize business impact.",
+      "contentMarkdown": "# Incident Management (High-Detail Practice)\n\n- **Purpose:** Restore normal service operation as quickly as possible to minimize negative impact on business operations.\n- **Definition of Incident:** An unplanned interruption to a service or reduction in the quality of a service.\n- **Key Features:** Use of target resolution times, incident logs, escalation procedures, and specialized toolsets.",
+      "prerequisites": ["svc-deliver-support"],
+      "resources": [
+        {
+          "id": "doc-incident-1",
+          "title": "ITIL Incident Management Guide",
+          "url": "https://www.axelos.com/resource-hub/practice-guide/incident-management",
+          "type": "documentation"
+        }
+      ],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "problem-management",
+      "title": "Problem Management",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "Reduce the likelihood and impact of incidents by identifying actual and potential causes.",
+      "contentMarkdown": "# Problem Management (High-Detail Practice)\n\n- **Purpose:** Reduce the likelihood and impact of incidents by identifying actual and potential causes, and managing workarounds and known errors.\n- **Definition of Problem:** A cause, or potential cause, of one or more incidents.\n- **Three Phases:**\n  1. **Problem Identification:** Detect trend patterns and analyze incidents.\n  2. **Problem Control:** Investigate problems, create workarounds, and document Known Errors.\n  3. **Error Control:** Identify permanent resolutions.",
+      "prerequisites": ["incident-management"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "change-enablement",
+      "title": "Change Enablement",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "Maximize the number of successful IT changes by ensuring risks are properly assessed and authorized.",
+      "contentMarkdown": "# Change Enablement (High-Detail Practice)\n\n- **Purpose:** Maximize the number of successful service and product changes by ensuring that risks are properly assessed, authorizing changes to proceed, and managing the change schedule.\n- **Types of Changes:**\n  - **Standard Changes:** Low risk, pre-authorized, common, and follow strict procedures.\n  - **Normal Changes:** Require full risk assessment, scheduling, and CAB approval.\n  - **Emergency Changes:** Must be implemented immediately (e.g., security patch). Uses an expedited approval pipeline.",
+      "prerequisites": ["svc-design-transition"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "service-desk",
+      "title": "Service Desk",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "The single point of contact for service consumers and IT users.",
+      "contentMarkdown": "# Service Desk (High-Detail Practice)\n\n- **Purpose:** Capture demand for incident resolution and service requests. It is the entry point and single point of contact (SPOC) for users.\n- **Skills & focus:** Excellent communication, customer service, empathy, and technical understanding. Uses multiple channels (phone, email, portals, chat).",
+      "prerequisites": ["svc-engage"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "service-level-management",
+      "title": "Service Level Management",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "Set clear business-based targets for service levels and monitor performance.",
+      "contentMarkdown": "# Service Level Management (High-Detail Practice)\n\n- **Purpose:** Set clear business-based targets for service levels, and ensure that service delivery is monitored, evaluated, and managed against these targets.\n- **Key Terms:** Service Level Agreements (SLAs). Focuses on outcomes and end-to-end customer experience, not just individual metrics.",
+      "prerequisites": ["svc-engage"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "continual-improvement-practice",
+      "title": "Continual Improvement Practice",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "Align organizational services and SVS components with changing business needs.",
+      "contentMarkdown": "# Continual Improvement Practice (High-Detail Practice)\n\n- **Purpose:** Align the organization's practices and services with changing business needs through ongoing identification and improvement of SVS components.",
+      "prerequisites": ["continual-improvement-7steps"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "service-request-management",
+      "title": "Service Request Management",
+      "category": "practices_detail",
+      "nodeType": "practice_node",
+      "summary": "Support agreed service quality by handling user-initiated service requests.",
+      "contentMarkdown": "# Service Request Management (High-Detail Practice)\n\n- **Purpose:** Support the agreed quality of service by handling all pre-defined, user-initiated service requests in a friendly and efficient manner.\n- **Definition of Service Request:** A request from a user or authorized representative that initiates a service action (e.g., resetting password, providing access, upgrading hardware).",
+      "prerequisites": ["service-desk"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "information-security",
+      "title": "Information Security Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Protect the information needed by the organization to conduct its business.",
+      "contentMarkdown": "# Information Security Management (Overview Practice)\n\n- **Purpose:** Protect the information needed by the organization to conduct its business (confidentiality, integrity, and availability).",
+      "prerequisites": ["svc-plan"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "relationship-management",
+      "title": "Relationship Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Establish and nurture links between the organization and its stakeholders.",
+      "contentMarkdown": "# Relationship Management (Overview Practice)\n\n- **Purpose:** Establish and nurture the links between the organization and its stakeholders at strategic and tactical levels.",
+      "prerequisites": ["svc-engage"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "supplier-management",
+      "title": "Supplier Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Ensure the organization's suppliers and their performance are managed.",
+      "contentMarkdown": "# Supplier Management (Overview Practice)\n\n- **Purpose:** Ensure that the organization's suppliers and their performances are managed appropriately to support the seamless delivery of quality products and services.",
+      "prerequisites": ["partners-suppliers"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "it-asset-management",
+      "title": "IT Asset Management (ITAM)",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Plan and manage the full lifecycle of all IT assets.",
+      "contentMarkdown": "# IT Asset Management (Overview Practice)\n\n- **Purpose:** Plan and manage the full lifecycle of all IT assets to help the organization maximize value, control costs, manage risks, and ensure compliance.",
+      "prerequisites": ["svc-obtain-build"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "monitoring-event-management",
+      "title": "Monitoring & Event Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Systematically observe services and SVS components, and record changes of state.",
+      "contentMarkdown": "# Monitoring & Event Management (Overview Practice)\n\n- **Purpose:** Systematically observe services and SVS components, and record and report selected changes of state identified as events.",
+      "prerequisites": ["svc-deliver-support"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "release-management",
+      "title": "Release Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Make new and changed services and features available for use.",
+      "contentMarkdown": "# Release Management (Overview Practice)\n\n- **Purpose:** Make new and changed services and features available for use.\n- **Contrast with Deployment:** Release management focuses on making features available to the *business/user* (often toggle/business decision), while deployment focuses on transferring the *code/infrastructure* to target production environments.",
+      "prerequisites": ["change-enablement"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "deployment-management",
+      "title": "Deployment Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Move new or changed hardware, software, or documentation to live environments.",
+      "contentMarkdown": "# Deployment Management (Overview Practice)\n\n- **Purpose:** Move new or changed hardware, software, documentation, processes, or any other component to live environments.\n- **Contrast with Release:** Deployment is a technical action, whereas Release is a business action making the functionality accessible to users.",
+      "prerequisites": ["change-enablement"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    },
+    {
+      "id": "service-configuration-management",
+      "title": "Service Configuration Management",
+      "category": "practices_overview",
+      "nodeType": "practice_node",
+      "summary": "Ensure accurate information about the configuration of services is available.",
+      "contentMarkdown": "# Service Configuration Management (Overview Practice)\n\n- **Purpose:** Ensure that accurate and reliable information about the configuration of services, and the CIs (Configuration Items) that support them, is available when and where it is needed.\n- **Key Concept:** Configuration Management Database (CMDB) mapping service dependencies.",
+      "prerequisites": ["it-asset-management"],
+      "resources": [],
+      "width": 260,
+      "height": 120
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-concept-relation",
+      "source": "value-co-creation",
+      "target": "service-relationships",
+      "label": "leads to",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-concept-utility",
+      "source": "value-co-creation",
+      "target": "utility-warranty",
+      "label": "defines",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-concept-roles",
+      "source": "value-co-creation",
+      "target": "key-roles",
+      "label": "involves",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-concept-cost",
+      "source": "value-co-creation",
+      "target": "cost-risk",
+      "label": "imposes/removes",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-dim-org",
+      "source": "orgs-people",
+      "target": "pestle-hub",
+      "label": "influenced by",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-dim-info",
+      "source": "info-tech",
+      "target": "pestle-hub",
+      "label": "influenced by",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-dim-partner",
+      "source": "partners-suppliers",
+      "target": "pestle-hub",
+      "label": "influenced by",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-dim-stream",
+      "source": "value-streams-processes",
+      "target": "pestle-hub",
+      "label": "influenced by",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-1",
+      "source": "focus-on-value",
+      "target": "start-where-you-are",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-2",
+      "source": "start-where-you-are",
+      "target": "progress-iteratively-feedback",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-3",
+      "source": "progress-iteratively-feedback",
+      "target": "collaborate-promote-visibility",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-4",
+      "source": "collaborate-promote-visibility",
+      "target": "think-work-holistically",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-5",
+      "source": "think-work-holistically",
+      "target": "keep-it-simple-practical",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-6",
+      "source": "keep-it-simple-practical",
+      "target": "optimize-automate",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svs-input",
+      "source": "opportunity-demand",
+      "target": "governance",
+      "label": "triggers",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svs-engage",
+      "source": "opportunity-demand",
+      "target": "svc-engage",
+      "label": "intake",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svs-gov",
+      "source": "governance",
+      "target": "svc-plan",
+      "label": "aligns",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-plan-design",
+      "source": "svc-plan",
+      "target": "svc-design-transition",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-design-build",
+      "source": "svc-design-transition",
+      "target": "svc-obtain-build",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-build-deliver",
+      "source": "svc-obtain-build",
+      "target": "svc-deliver-support",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-deliver-improve",
+      "source": "svc-deliver-support",
+      "target": "svc-improve",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-improve-steps",
+      "source": "svc-improve",
+      "target": "continual-improvement-7steps",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-improve-value",
+      "source": "svc-improve",
+      "target": "svs-value",
+      "label": "delivers",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-svc-steps-value",
+      "source": "continual-improvement-7steps",
+      "target": "svs-value",
+      "label": "proves",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-incident",
+      "source": "svc-deliver-support",
+      "target": "incident-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-problem",
+      "source": "incident-management",
+      "target": "problem-management",
+      "label": "escalates to",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-change",
+      "source": "svc-design-transition",
+      "target": "change-enablement",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-desk",
+      "source": "svc-engage",
+      "target": "service-desk",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-slm",
+      "source": "svc-engage",
+      "target": "service-level-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-request",
+      "source": "service-desk",
+      "target": "service-request-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-continual",
+      "source": "continual-improvement-7steps",
+      "target": "continual-improvement-practice",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-security",
+      "source": "svc-plan",
+      "target": "information-security",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-relation",
+      "source": "svc-engage",
+      "target": "relationship-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-supplier",
+      "source": "partners-suppliers",
+      "target": "supplier-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-itam",
+      "source": "svc-obtain-build",
+      "target": "it-asset-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-monitor",
+      "source": "svc-deliver-support",
+      "target": "monitoring-event-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-release",
+      "source": "change-enablement",
+      "target": "release-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-deploy",
+      "source": "change-enablement",
+      "target": "deployment-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-config",
+      "source": "it-asset-management",
+      "target": "service-configuration-management",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-feedback-problem",
+      "source": "problem-management",
+      "target": "continual-improvement-practice",
+      "label": "improvement inputs",
+      "isFeedbackLoop": true
+    },
+    {
+      "id": "e-feedback-change-reject",
+      "source": "change-enablement",
+      "target": "svc-plan",
+      "label": "change rejected",
+      "isFeedbackLoop": true
+    }
+  ]
+}
