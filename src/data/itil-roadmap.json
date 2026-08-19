@@ -524,237 +524,259 @@
       "id": "e-concepts-to-svs",
       "source": "value-co-creation",
       "target": "opportunity-demand",
-      "label": "applies to",
+      "label": "Triggers Value Streams",
       "isFeedbackLoop": false
     },
     {
       "id": "e-concept-relation",
       "source": "value-co-creation",
       "target": "service-relationships",
-      "label": "leads to",
+      "label": "Governed By",
       "isFeedbackLoop": false
     },
     {
       "id": "e-concept-utility",
       "source": "value-co-creation",
       "target": "utility-warranty",
-      "label": "defines",
+      "label": "Defines Value Requirements",
       "isFeedbackLoop": false
     },
     {
       "id": "e-concept-roles",
       "source": "value-co-creation",
       "target": "key-roles",
-      "label": "involves",
+      "label": "Consumer & Provider Roles",
       "isFeedbackLoop": false
     },
     {
       "id": "e-concept-cost",
       "source": "value-co-creation",
       "target": "cost-risk",
-      "label": "imposes/removes",
+      "label": "Imposes / Mitigates Risk",
       "isFeedbackLoop": false
     },
     {
       "id": "e-dim-org",
       "source": "orgs-people",
       "target": "pestle-hub",
-      "label": "influenced by",
+      "label": "Organizational Factors",
       "isFeedbackLoop": false
     },
     {
       "id": "e-dim-info",
       "source": "info-tech",
       "target": "pestle-hub",
-      "label": "influenced by",
+      "label": "Information Assets & Tech",
       "isFeedbackLoop": false
     },
     {
       "id": "e-dim-partner",
       "source": "partners-suppliers",
       "target": "pestle-hub",
-      "label": "influenced by",
+      "label": "Supplier Ecosystem",
       "isFeedbackLoop": false
     },
     {
       "id": "e-dim-stream",
       "source": "value-streams-processes",
       "target": "pestle-hub",
-      "label": "influenced by",
+      "label": "Process Workflows",
       "isFeedbackLoop": false
     },
     {
       "id": "e-principle-1",
       "source": "focus-on-value",
       "target": "start-where-you-are",
+      "label": "Sequential Alignment",
       "isFeedbackLoop": false
     },
     {
       "id": "e-principle-2",
       "source": "start-where-you-are",
       "target": "progress-iteratively-feedback",
+      "label": "Baseline Iteration",
       "isFeedbackLoop": false
     },
     {
       "id": "e-principle-3",
       "source": "progress-iteratively-feedback",
       "target": "collaborate-promote-visibility",
+      "label": "Feedback Loops",
       "isFeedbackLoop": false
     },
     {
       "id": "e-principle-4",
       "source": "collaborate-promote-visibility",
       "target": "think-work-holistically",
+      "label": "Transparent Culture",
       "isFeedbackLoop": false
     },
     {
       "id": "e-principle-5",
       "source": "think-work-holistically",
       "target": "keep-it-simple-practical",
+      "label": "Holistic Scope",
       "isFeedbackLoop": false
     },
     {
       "id": "e-principle-6",
       "source": "keep-it-simple-practical",
       "target": "optimize-automate",
+      "label": "Lean Optimization",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svs-input",
       "source": "opportunity-demand",
       "target": "governance",
-      "label": "triggers",
+      "label": "Triggers Strategic Evaluation",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svs-engage",
       "source": "opportunity-demand",
       "target": "svc-engage",
-      "label": "intake",
+      "label": "Stakeholder Intake & Feedback",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svs-gov",
       "source": "governance",
       "target": "svc-plan",
-      "label": "aligns",
+      "label": "Directs Strategy & Policy",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-plan-design",
       "source": "svc-plan",
       "target": "svc-design-transition",
+      "label": "Architectural Guidance",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-design-build",
       "source": "svc-design-transition",
       "target": "svc-obtain-build",
+      "label": "Build Specifications",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-build-deliver",
       "source": "svc-obtain-build",
       "target": "svc-deliver-support",
+      "label": "Deploys Service Packages",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-deliver-improve",
       "source": "svc-deliver-support",
       "target": "svc-improve",
+      "label": "Operational Telemetry",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-improve-steps",
       "source": "svc-improve",
       "target": "continual-improvement-7steps",
+      "label": "Improvement Iterations",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-improve-value",
       "source": "svc-improve",
       "target": "svs-value",
-      "label": "delivers",
+      "label": "Delivers Enhanced Value",
       "isFeedbackLoop": false
     },
     {
       "id": "e-svc-steps-value",
       "source": "continual-improvement-7steps",
       "target": "svs-value",
-      "label": "proves",
+      "label": "Proves Value Realization",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-incident",
       "source": "svc-deliver-support",
       "target": "incident-management",
+      "label": "Intake & Incident Resolution",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-problem",
       "source": "incident-management",
       "target": "problem-management",
-      "label": "escalates to",
+      "label": "Escalates Root Cause Analysis",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-change",
       "source": "svc-design-transition",
       "target": "change-enablement",
+      "label": "Risk Assessment & Gate",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-desk",
       "source": "svc-engage",
       "target": "service-desk",
+      "label": "Single Point of Contact",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-slm",
       "source": "svc-engage",
       "target": "service-level-management",
+      "label": "Agreed SLA Targets",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-request",
       "source": "service-desk",
       "target": "service-request-management",
+      "label": "Fulfills User Requests",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-continual",
       "source": "continual-improvement-7steps",
       "target": "continual-improvement-practice",
+      "label": "Methodology Framework",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-security",
       "source": "svc-plan",
       "target": "information-security",
+      "label": "Security Governance & Controls",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-relation",
       "source": "svc-engage",
       "target": "relationship-management",
+      "label": "Stakeholder Relationship Alignment",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-supplier",
       "source": "partners-suppliers",
       "target": "supplier-management",
+      "label": "Vendor Contracts & Negotiation",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-itam",
       "source": "svc-obtain-build",
       "target": "it-asset-management",
+      "label": "Tracks Asset Lifecycle",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-monitor",
       "source": "svc-deliver-support",
       "target": "monitoring-event-management",
+      "label": "Telemetry & Event Alerts",
       "isFeedbackLoop": false
     },
     {
@@ -775,7 +797,7 @@
       "id": "e-practice-config",
       "source": "it-asset-management",
       "target": "service-configuration-management",
-      "label": "Populates CMDB Assets",
+      "label": "Reconciles CMDB & License Data",
       "isFeedbackLoop": false
     },
     {
@@ -789,21 +811,77 @@
       "id": "e-practice-change-config",
       "source": "change-enablement",
       "target": "service-configuration-management",
-      "label": "Queries CMDB & Risk Impact",
+      "label": "Assesses CMDB Impact & Risk",
       "isFeedbackLoop": false
     },
     {
       "id": "e-feedback-problem",
       "source": "problem-management",
       "target": "continual-improvement-practice",
-      "label": "improvement inputs",
+      "label": "Feeds Known Errors & PIR",
       "isFeedbackLoop": true
     },
     {
       "id": "e-feedback-change-reject",
       "source": "change-enablement",
       "target": "svc-plan",
-      "label": "change rejected",
+      "label": "Change Rejected Feedback",
+      "isFeedbackLoop": true
+    },
+    {
+      "id": "e-concept-to-principle",
+      "source": "value-co-creation",
+      "target": "focus-on-value",
+      "label": "Establishes Core Mandate",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-to-gov",
+      "source": "think-work-holistically",
+      "target": "governance",
+      "label": "Enforces End-to-End Governance",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-to-improvement",
+      "source": "optimize-automate",
+      "target": "continual-improvement-practice",
+      "label": "Automates Standard Workflows",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-pestle-to-plan",
+      "source": "pestle-hub",
+      "target": "svc-plan",
+      "label": "External Regulatory Constraints",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-stream-to-design",
+      "source": "value-streams-processes",
+      "target": "svc-design-transition",
+      "label": "Orchestrates Process Workflows",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-feedback-sla",
+      "source": "incident-management",
+      "target": "service-level-management",
+      "label": "SLA Breach & Experience Feedback",
+      "isFeedbackLoop": true
+    },
+    {
+      "id": "e-feedback-csat",
+      "source": "svc-deliver-support",
+      "target": "svc-engage",
+      "label": "CSAT & Escalation Feedback",
+      "isFeedbackLoop": true
+    },
+    {
+      "id": "e-feedback-event-incident",
+      "source": "monitoring-event-management",
+      "target": "incident-management",
+      "label": "Event Alert Exception Loop",
       "isFeedbackLoop": true
     }
   ]

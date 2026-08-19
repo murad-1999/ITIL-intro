@@ -16,17 +16,26 @@ export const CHANGE_MANAGER_FOCUS_NODE_IDS = [
   'svc-design-transition'
 ];
 
+export type ThemeMode = 'dark' | 'light';
+
+export type ViewMode = 'canvas' | 'grid';
+
 interface RoadmapState {
   completedNodeIds: string[];
   selectedNodeId: string | null;
   searchQuery: string;
   isChangeManagerFocusMode: boolean;
+  theme: ThemeMode;
+  viewMode: ViewMode;
   hasHydrated: boolean;
   
   setHasHydrated: (state: boolean) => void;
   setSelectedNode: (nodeId: string | null) => void;
   setSearchQuery: (query: string) => void;
   toggleChangeManagerFocusMode: () => void;
+  setTheme: (theme: ThemeMode) => void;
+  toggleTheme: () => void;
+  setViewMode: (mode: ViewMode) => void;
   toggleNodeCompletion: (nodeId: string) => void;
   resetProgress: () => void;
 }
@@ -38,12 +47,17 @@ export const useRoadmapStore = create<RoadmapState>()(
       selectedNodeId: null,
       searchQuery: '',
       isChangeManagerFocusMode: false,
+      theme: 'dark',
+      viewMode: 'canvas',
       hasHydrated: false,
       
       setHasHydrated: (state) => set({ hasHydrated: state }),
       setSelectedNode: (nodeId) => set({ selectedNodeId: nodeId }),
       setSearchQuery: (query) => set({ searchQuery: query }),
       toggleChangeManagerFocusMode: () => set((state) => ({ isChangeManagerFocusMode: !state.isChangeManagerFocusMode })),
+      setTheme: (theme) => set({ theme }),
+      toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
+      setViewMode: (mode) => set({ viewMode: mode }),
       toggleNodeCompletion: (nodeId) =>
         set((state) => {
           const isCompleted = state.completedNodeIds.includes(nodeId);
