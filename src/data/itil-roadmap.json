@@ -862,6 +862,27 @@
       "target": "svc-design-transition",
       "label": "Orchestrates Process Workflows",
       "isFeedbackLoop": false
+    },
+    {
+      "id": "e-feedback-sla",
+      "source": "incident-management",
+      "target": "service-level-management",
+      "label": "SLA Breach & Experience Feedback",
+      "isFeedbackLoop": true
+    },
+    {
+      "id": "e-feedback-csat",
+      "source": "svc-deliver-support",
+      "target": "svc-engage",
+      "label": "CSAT & Escalation Feedback",
+      "isFeedbackLoop": true
+    },
+    {
+      "id": "e-feedback-event-incident",
+      "source": "monitoring-event-management",
+      "target": "incident-management",
+      "label": "Event Alert Exception Loop",
+      "isFeedbackLoop": true
     }
   ]
 }
