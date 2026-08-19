@@ -63,7 +63,8 @@ export function calculateGraphLayout(
       source: edge.source,
       target: edge.target,
       label: edge.label,
-      type: 'smoothstep', // Use orthogonal step routing to route through grid channels between cards
+      type: 'customEdge', // Use CustomEdge component with EdgeLabelRenderer for HTML-layered labels
+      data: { isFeedbackLoop: isFeedback },
       style: isFeedback
         ? { strokeDasharray: '5,5', stroke: '#ef4444', strokeWidth: 2 }
         : { stroke: '#94a3b8', strokeWidth: 1.5 },
@@ -73,13 +74,6 @@ export function calculateGraphLayout(
         width: 16,
         height: 16,
       },
-      labelStyle: isFeedback
-        ? { fill: '#fca5a5', fontWeight: 600, fontSize: 10 }
-        : { fill: '#94a3b8', fontSize: 10 },
-      labelBgStyle: isFeedback
-        ? { fill: '#7f1d1d', fillOpacity: 0.95, rx: 6, ry: 6 }
-        : { fill: '#18181b', fillOpacity: 0.95, rx: 6, ry: 6 },
-      labelBgPadding: [6, 4] as [number, number],
     };
   });
 

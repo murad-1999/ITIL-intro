@@ -13,6 +13,7 @@ import {
   useReactFlow,
   type NodeMouseHandler,
   type NodeTypes,
+  type EdgeTypes,
   type Node
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -23,9 +24,14 @@ import { calculateGraphLayout } from '../../lib/layout';
 import { validateRoadmapPayload } from '../../lib/validator';
 import rawRoadmapData from '../../data/itil-roadmap.json';
 import CustomNode from './CustomNode';
+import CustomEdge from './CustomEdge';
 
 const nodeTypes: NodeTypes = {
   customNode: CustomNode,
+};
+
+const edgeTypes: EdgeTypes = {
+  customEdge: CustomEdge,
 };
 
 const ZoomControls = () => {
@@ -168,6 +174,7 @@ const RoadmapFlow = () => {
       nodes={finalNodes}
       edges={edges}
       nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
       onNodeClick={onNodeClick}
       onPaneClick={onPaneClick}
       onNodesChange={onNodesChange}
