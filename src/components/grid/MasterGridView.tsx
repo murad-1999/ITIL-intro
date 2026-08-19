@@ -129,12 +129,12 @@ export function MasterGridView() {
                   <div
                     key={node.id}
                     className={clsx(
-                      "p-4 rounded-xl border flex flex-col justify-between space-y-3 transition-all duration-200 relative group shadow-sm hover:shadow-md",
+                      "p-4 rounded-xl border-2 flex flex-col justify-between space-y-3 transition-all duration-200 relative group shadow-sm hover:shadow-md",
                       status === 'locked'
-                        ? "bg-slate-100/70 dark:bg-zinc-900/40 border-dashed border-slate-300 dark:border-zinc-800 opacity-60"
+                        ? "bg-slate-100/70 dark:bg-zinc-900/60 border-dashed border-slate-300 dark:border-zinc-700/80 opacity-60"
                         : status === 'completed'
-                        ? "bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800/80"
-                        : "bg-white dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 hover:border-blue-400 dark:hover:border-blue-500",
+                        ? "bg-emerald-50/50 dark:bg-emerald-950/30 border-emerald-400 dark:border-emerald-500/90 shadow-sm"
+                        : "bg-white dark:bg-zinc-900 border-slate-300 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-400 shadow-sm dark:shadow-zinc-950/50",
                       isSearchMatched && "ring-2 ring-amber-400 dark:ring-amber-300 shadow-amber-500/20",
                       isChangeManagerFocusMode && isFocusedNode && "ring-2 ring-blue-500 dark:ring-blue-400 shadow-blue-500/20",
                       isFocusDimmed && "opacity-20 grayscale"

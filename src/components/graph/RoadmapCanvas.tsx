@@ -181,6 +181,7 @@ const RoadmapFlow = () => {
       onEdgesChange={onEdgesChange}
       minZoom={0.1}
       maxZoom={2.5}
+      translateExtent={[[-200, -200], [3800, 1600]]}
       defaultMarkerColor={theme === 'dark' ? '#94a3b8' : '#64748b'}
     >
       <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dotColor} />
