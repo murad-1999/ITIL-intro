@@ -7,7 +7,10 @@ export function calculateGraphLayout(
   edges: RoadmapEdge[],
   direction = 'LR'
 ): { nodes: Node[]; edges: Edge[] } {
-  const g = new dagre.graphlib.Graph();
+  // Handle environments where dagre is imported as a module namespace/default object wrapper
+  const d = (dagre as unknown as { default?: typeof dagre }).default || dagre;
+
+  const g = new d.graphlib.Graph();
   g.setGraph({
     rankdir: direction,
     nodesep: 80,
@@ -28,7 +31,7 @@ export function calculateGraphLayout(
   });
 
   // Calculate layout
-  dagre.layout(g);
+  d.layout(g);
 
   // Map to XyFlow Nodes
   const xyNodes: Node[] = nodes.map((node) => {

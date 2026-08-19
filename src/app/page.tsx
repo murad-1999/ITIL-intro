@@ -8,9 +8,7 @@ import rawRoadmapData from '../data/itil-roadmap.json';
 import { 
   Compass, 
   Sparkles,
-  RotateCcw,
-  BookOpen,
-  Award
+  RotateCcw
 } from 'lucide-react';
 
 // Dynamically load the RoadmapCanvas with SSR disabled to prevent hydration failures
@@ -98,7 +96,9 @@ export default function Home() {
         
         {/* Canvas container */}
         <div className="flex-1 min-h-0 w-full relative">
-          <RoadmapCanvas />
+          <div className="absolute inset-0">
+            <RoadmapCanvas />
+          </div>
         </div>
 
         {/* Float instructions banner at top-left of canvas */}

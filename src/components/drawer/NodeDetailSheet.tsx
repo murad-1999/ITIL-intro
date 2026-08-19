@@ -11,9 +11,7 @@ import {
   FileText, 
   BookOpen, 
   PlayCircle, 
-  HelpCircle,
-  AlertTriangle,
-  Award
+  HelpCircle
 } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { clsx } from 'clsx';
@@ -149,7 +147,7 @@ export const NodeDetailSheet = () => {
           {/* Short summary card */}
           <div className="p-4 bg-zinc-900/40 rounded-xl border border-zinc-800/80">
             <p className="text-xs text-zinc-300 leading-relaxed italic">
-              "{node.summary}"
+              &quot;{node.summary}&quot;
             </p>
           </div>
 

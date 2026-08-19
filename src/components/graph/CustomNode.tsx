@@ -48,13 +48,7 @@ export type CustomNodeType = Node<{ node: RoadmapNode }, 'customNode'>;
 
 export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
   const node = data.node;
-  const { completedNodeIds, hasHydrated } = useRoadmapStore();
-
-  if (!hasHydrated) {
-    return (
-      <div className="w-[260px] h-[120px] rounded-xl border border-gray-200 bg-gray-50 animate-pulse" />
-    );
-  }
+  const { completedNodeIds } = useRoadmapStore();
 
   const nodeStatus = getNodeStatus(node.id, node.prerequisites, completedNodeIds);
 

@@ -75,7 +75,7 @@ export const RoadmapCanvas = () => {
         <Controls showInteractive={false} />
         <MiniMap 
           nodeColor={(node: Node) => {
-            const category = (node.data as any)?.node?.category;
+            const category = (node.data as { node?: { category?: string } })?.node?.category;
             if (category === 'practices_detail') return '#3b82f6';
             if (category === 'practices_overview') return '#60a5fa';
             if (category === 'concepts') return '#a855f7';
