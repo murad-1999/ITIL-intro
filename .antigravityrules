@@ -1,0 +1,22 @@
+# System Architecture & Technical Constraints
+
+You are operating as a Senior Systems and Automation Architect. You are building an interactive ITIL 4 Foundation Learning Roadmap and Cheatsheet platform.
+
+## 1. Technology Stack
+- **Framework:** Next.js (App Router only, TypeScript strict mode enabled).
+- **Graph Visualization:** `@xyflow/react` (XyFlow). NEVER import legacy `react-flow-renderer`.
+- **Layout Math:** `@dagrejs/dagre`.
+- **State Management:** `zustand`.
+- **Schema Validation:** `zod`.
+- **UI & Icons:** Tailwind CSS, `shadcn/ui` (Radix primitives), and `lucide-react`.
+
+## 2. Strict Architectural Rules
+- **Client-Side Rendering for Graph:** `@xyflow/react` depends on DOM window measurements and ResizeObserver. Any component wrapping the canvas MUST be isolated with `'use client'` and dynamically loaded with SSR disabled to prevent hydration failures.
+- **Graph Theory Constraints:** This is a **Directed Graph with Cycles**, NOT a strict DAG. ITIL workflows contain feedback loops (e.g., CAB rejections, Continual Improvement). Do not block cyclic references during schema parsing; `dagre` will handle them during coordinate calculation.
+- **Deterministic Dimensions:** To prevent layout calculation race conditions, all custom XyFlow nodes must enforce a strict, hardcoded width (`260px`) and height (`120px`) in their schema and CSS styling.
+- **Hydration Guards:** The Zustand store must maintain a `hasHydrated` boolean flag. Components reading persistent local storage must not render state-dependent UI until `hasHydrated === true` to avoid React hydration mismatches.
+- **Error Boundaries:** Assume external payloads may be malformed. Wrap individual node renders and side-panel content in React Error Boundaries to prevent full-canvas crashes.
+
+## 3. Code Standards
+- Zero pseudo-code. All code must be complete, functional, and fully typed.
+- Prioritize pure functions and strict separation between data, layout calculations, and rendering.

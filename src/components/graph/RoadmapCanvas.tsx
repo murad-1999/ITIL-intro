@@ -92,7 +92,7 @@ const RoadmapFlow = () => {
       onEdgesChange={onEdgesChange}
       fitView
       fitViewOptions={{ padding: 0.05, maxZoom: 1.0 }}
-      minZoom={0.2}
+      minZoom={0.05}
       maxZoom={2.5}
       defaultMarkerColor="#94a3b8"
     >
