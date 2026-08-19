@@ -805,6 +805,41 @@
       "target": "svc-plan",
       "label": "change rejected",
       "isFeedbackLoop": true
+    },
+    {
+      "id": "e-concept-to-principle",
+      "source": "value-co-creation",
+      "target": "focus-on-value",
+      "label": "inspires principles",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-to-gov",
+      "source": "think-work-holistically",
+      "target": "governance",
+      "label": "guides policy",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-principle-to-improvement",
+      "source": "optimize-automate",
+      "target": "continual-improvement-practice",
+      "label": "drives automation",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-pestle-to-plan",
+      "source": "pestle-hub",
+      "target": "svc-plan",
+      "label": "constrains strategy",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-stream-to-design",
+      "source": "value-streams-processes",
+      "target": "svc-design-transition",
+      "label": "defines workflows",
+      "isFeedbackLoop": false
     }
   ]
 }

@@ -57,20 +57,20 @@ const ChangeAuthorityQuiz = () => {
   const currentScenario = scenarios[activeScenarioIndex];
 
   return (
-    <div className="my-6 p-4 rounded-xl bg-blue-950/20 border border-blue-800/60 text-zinc-200 space-y-4">
-      <div className="flex items-center justify-between border-b border-blue-900/60 pb-2">
+    <div className="my-6 p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/60 text-slate-800 dark:text-zinc-200 space-y-4">
+      <div className="flex items-center justify-between border-b border-blue-200 dark:border-blue-900/60 pb-2">
         <div className="flex items-center gap-2">
-          <ShieldAlert className="w-4 h-4 text-blue-400" />
-          <h4 className="text-xs font-bold text-blue-300 uppercase tracking-wider">
+          <ShieldAlert className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+          <h4 className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
             ITIL 4 Change Authority Decision Simulator
           </h4>
         </div>
-        <span className="text-[10px] font-mono text-zinc-400">
+        <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400">
           Scenario {activeScenarioIndex + 1}/{scenarios.length}
         </span>
       </div>
 
-      <p className="text-xs font-medium text-zinc-200 leading-relaxed">
+      <p className="text-xs font-medium text-slate-800 dark:text-zinc-200 leading-relaxed">
         {currentScenario.scenario}
       </p>
 
@@ -86,16 +86,16 @@ const ChangeAuthorityQuiz = () => {
                   "w-full text-left p-2.5 rounded-lg border text-xs transition-all flex flex-col gap-1",
                   isSelected
                     ? opt.correct
-                      ? "bg-emerald-950/40 border-emerald-500/80 text-emerald-200"
-                      : "bg-red-950/40 border-red-500/80 text-red-200"
-                    : "bg-zinc-900/60 border-zinc-800 hover:border-zinc-700 text-zinc-300"
+                      ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-900 dark:text-emerald-200"
+                      : "bg-red-50 dark:bg-red-950/40 border-red-500 text-red-900 dark:text-red-200"
+                    : "bg-white dark:bg-zinc-900/60 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 text-slate-700 dark:text-zinc-300"
                 )
               )}
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold">{opt.label}</span>
                 {isSelected && (
-                  opt.correct ? <Check className="w-4 h-4 text-emerald-400" /> : <AlertCircle className="w-4 h-4 text-red-400" />
+                  opt.correct ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400" />
                 )}
               </div>
               {isSelected && (
@@ -112,14 +112,14 @@ const ChangeAuthorityQuiz = () => {
         <button
           onClick={() => setActiveScenarioIndex(prev => Math.max(0, prev - 1))}
           disabled={activeScenarioIndex === 0}
-          className="text-[11px] text-zinc-400 hover:text-zinc-200 disabled:opacity-30 disabled:pointer-events-none"
+          className="text-[11px] text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-zinc-200 disabled:opacity-30 disabled:pointer-events-none"
         >
           &larr; Previous Scenario
         </button>
         <button
           onClick={() => setActiveScenarioIndex(prev => Math.min(scenarios.length - 1, prev + 1))}
           disabled={activeScenarioIndex === scenarios.length - 1}
-          className="text-[11px] text-blue-400 font-semibold hover:text-blue-300 disabled:opacity-30 disabled:pointer-events-none"
+          className="text-[11px] text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 disabled:opacity-30 disabled:pointer-events-none"
         >
           Next Scenario &rarr;
         </button>
@@ -178,15 +178,15 @@ export const NodeDetailSheet = () => {
   const getResourceIcon = (type: string) => {
     switch (type) {
       case 'documentation':
-        return <FileText className="w-4 h-4 text-blue-400" />;
+        return <FileText className="w-4 h-4 text-blue-500 dark:text-blue-400" />;
       case 'cheatsheet':
-        return <BookOpen className="w-4 h-4 text-yellow-400" />;
+        return <BookOpen className="w-4 h-4 text-amber-500 dark:text-yellow-400" />;
       case 'video':
-        return <PlayCircle className="w-4 h-4 text-red-400" />;
+        return <PlayCircle className="w-4 h-4 text-red-500 dark:text-red-400" />;
       case 'exam_tip':
-        return <HelpCircle className="w-4 h-4 text-purple-400" />;
+        return <HelpCircle className="w-4 h-4 text-purple-500 dark:text-purple-400" />;
       default:
-        return <ExternalLink className="w-4 h-4 text-zinc-400" />;
+        return <ExternalLink className="w-4 h-4 text-slate-400 dark:text-zinc-400" />;
     }
   };
 
@@ -196,7 +196,7 @@ export const NodeDetailSheet = () => {
       <div 
         className={twMerge(
           clsx(
-            "fixed inset-0 bg-black/60 backdrop-blur-sm z-50 transition-opacity duration-300",
+            "fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300",
             isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
           )
         )}
@@ -207,22 +207,22 @@ export const NodeDetailSheet = () => {
       <div 
         className={twMerge(
           clsx(
-            "fixed right-0 top-0 bottom-0 w-full sm:w-[500px] bg-zinc-950/95 border-l border-zinc-800 text-zinc-100 z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-out transform",
+            "fixed right-0 top-0 bottom-0 w-full sm:w-[500px] bg-white dark:bg-zinc-950 border-l border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-zinc-100 z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-out transform",
             isOpen ? "translate-x-0" : "translate-x-full"
           )
         )}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between p-5 border-b border-zinc-800 bg-zinc-900/50">
+        <div className="flex items-center justify-between p-5 border-b border-slate-200 dark:border-zinc-800 bg-slate-50/70 dark:bg-zinc-900/50">
           <div className="flex flex-col gap-1">
-            <span className="text-[10px] font-bold tracking-widest text-blue-400 uppercase bg-blue-950/40 border border-blue-900 px-2 py-0.5 rounded-full w-max">
+            <span className="text-[10px] font-bold tracking-widest text-blue-700 dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 px-2 py-0.5 rounded-full w-max">
               {node.category.replace(/_/g, ' ')}
             </span>
-            <h3 className="text-base font-bold text-white mt-1 leading-snug">{node.title}</h3>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1 leading-snug">{node.title}</h3>
           </div>
           <button 
             onClick={() => setSelectedNode(null)}
-            className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-zinc-800 text-slate-400 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
             title="Close drawer (Esc)"
           >
             <X className="w-5 h-5" />
@@ -234,11 +234,11 @@ export const NodeDetailSheet = () => {
           
           {/* Prerequisite Alert Panel */}
           {isLocked && (
-            <div className="p-4 rounded-xl border border-red-900/60 bg-red-950/20 text-red-300 flex items-start gap-3">
-              <Lock className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/20 text-red-800 dark:text-red-300 flex items-start gap-3">
+              <Lock className="w-5 h-5 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-red-400">Topic Locked</h4>
-                <p className="text-xs text-red-200/80 leading-relaxed mt-1">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-red-700 dark:text-red-400">Topic Locked</h4>
+                <p className="text-xs text-red-700 dark:text-red-200/80 leading-relaxed mt-1">
                   Complete the following prerequisites on the roadmap before marking this topic as completed:
                 </p>
                 <ul className="list-disc list-inside mt-2 text-xs space-y-1 pl-1">
@@ -246,7 +246,7 @@ export const NodeDetailSheet = () => {
                     <li key={prereq.id}>
                       <button 
                         onClick={() => setSelectedNode(prereq.id)}
-                        className="underline hover:text-red-100 font-medium text-left"
+                        className="underline hover:text-red-950 dark:hover:text-red-100 font-medium text-left"
                       >
                         {prereq.title}
                       </button>
@@ -258,8 +258,8 @@ export const NodeDetailSheet = () => {
           )}
 
           {/* Short summary card */}
-          <div className="p-4 bg-zinc-900/40 rounded-xl border border-zinc-800/80">
-            <p className="text-xs text-zinc-300 leading-relaxed italic">
+          <div className="p-4 bg-slate-50 dark:bg-zinc-900/40 rounded-xl border border-slate-200 dark:border-zinc-800/80">
+            <p className="text-xs text-slate-700 dark:text-zinc-300 leading-relaxed italic">
               &quot;{node.summary}&quot;
             </p>
           </div>
@@ -270,25 +270,25 @@ export const NodeDetailSheet = () => {
           )}
 
           {/* Full Markdown explanation render */}
-          <div className="space-y-4 prose prose-invert prose-xs max-w-none">
+          <div className="space-y-4 prose dark:prose-invert prose-xs max-w-none">
             {node.contentMarkdown.split('\n\n').map((paragraph, index) => {
               if (paragraph.startsWith('# ')) {
                 return (
-                  <h3 key={index} className="text-base font-bold text-white border-b border-zinc-800 pb-1 mt-6">
+                  <h3 key={index} className="text-base font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-zinc-800 pb-1 mt-6">
                     {paragraph.replace('# ', '')}
                   </h3>
                 );
               }
               if (paragraph.startsWith('### ')) {
                 return (
-                  <h4 key={index} className="text-sm font-bold text-zinc-200 mt-4">
+                  <h4 key={index} className="text-sm font-bold text-slate-800 dark:text-zinc-200 mt-4">
                     {paragraph.replace('### ', '')}
                   </h4>
                 );
               }
               if (paragraph.startsWith('- ')) {
                 return (
-                  <ul key={index} className="list-disc list-inside space-y-1.5 pl-2 my-2 text-xs text-zinc-300 leading-relaxed">
+                  <ul key={index} className="list-disc list-inside space-y-1.5 pl-2 my-2 text-xs text-slate-700 dark:text-zinc-300 leading-relaxed">
                     {paragraph.split('\n').map((li, liIndex) => (
                       <li key={liIndex}>{li.replace('- ', '')}</li>
                     ))}
@@ -301,16 +301,16 @@ export const NodeDetailSheet = () => {
                 const rows = paragraph.split('\n').filter(r => r.trim() !== '');
                 if (rows.length > 1) {
                   return (
-                    <div key={index} className="overflow-x-auto my-3 border border-zinc-800 rounded-lg">
-                      <table className="min-w-full divide-y divide-zinc-800 text-xs">
-                        <tbody className="divide-y divide-zinc-800 bg-zinc-900/20">
+                    <div key={index} className="overflow-x-auto my-3 border border-slate-200 dark:border-zinc-800 rounded-lg">
+                      <table className="min-w-full divide-y divide-slate-200 dark:divide-zinc-800 text-xs">
+                        <tbody className="divide-y divide-slate-200 dark:divide-zinc-800 bg-slate-50/50 dark:bg-zinc-900/20">
                           {rows.map((row, rIndex) => {
                             const cells = row.split('|').map(c => c.trim()).filter((_, cIndex) => cIndex > 0 && cIndex < row.split('|').length - 1);
                             if (row.includes('---')) return null; // skip separator row
                             return (
-                              <tr key={rIndex} className={rIndex === 0 ? "bg-zinc-900 font-bold" : ""}>
+                              <tr key={rIndex} className={rIndex === 0 ? "bg-slate-100 dark:bg-zinc-900 font-bold text-slate-900 dark:text-white" : ""}>
                                 {cells.map((cell, cIndex) => (
-                                  <td key={cIndex} className="px-3 py-2 text-zinc-300">{cell}</td>
+                                  <td key={cIndex} className="px-3 py-2 text-slate-700 dark:text-zinc-300">{cell}</td>
                                 ))}
                               </tr>
                             );
@@ -323,7 +323,7 @@ export const NodeDetailSheet = () => {
               }
 
               return (
-                <p key={index} className="text-xs text-zinc-400 leading-relaxed">
+                <p key={index} className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
                   {paragraph}
                 </p>
               );
@@ -332,8 +332,8 @@ export const NodeDetailSheet = () => {
 
           {/* Resources links list */}
           {node.resources.length > 0 && (
-            <div className="border-t border-zinc-800 pt-5">
-              <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Study Resources</h4>
+            <div className="border-t border-slate-200 dark:border-zinc-800 pt-5">
+              <h4 className="text-xs font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-3">Study Resources</h4>
               <div className="space-y-2">
                 {node.resources.map(resource => (
                   <a
@@ -341,13 +341,13 @@ export const NodeDetailSheet = () => {
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 hover:bg-zinc-800/40 transition-all text-xs"
+                    className="flex items-center justify-between p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-lg hover:border-slate-300 dark:hover:border-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-800/40 transition-all text-xs"
                   >
                     <div className="flex items-center gap-2">
                       {getResourceIcon(resource.type)}
-                      <span className="font-semibold text-zinc-200">{resource.title}</span>
+                      <span className="font-semibold text-slate-800 dark:text-zinc-200">{resource.title}</span>
                     </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
                   </a>
                 ))}
               </div>
@@ -356,7 +356,7 @@ export const NodeDetailSheet = () => {
         </div>
 
         {/* Drawer Sticky Footer with completion action */}
-        <div className="p-5 border-t border-zinc-800 bg-zinc-950 flex flex-col gap-3">
+        <div className="p-5 border-t border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col gap-3">
           <button
             onClick={() => toggleNodeCompletion(node.id)}
             disabled={isLocked}
@@ -364,20 +364,20 @@ export const NodeDetailSheet = () => {
               clsx(
                 "w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold border transition-all duration-200",
                 isCompleted
-                  ? "bg-green-600/20 text-green-400 border-green-500 hover:bg-green-600/30"
+                  ? "bg-emerald-50 dark:bg-green-600/20 text-emerald-700 dark:text-green-400 border-emerald-400 dark:border-green-500 hover:bg-emerald-100 dark:hover:bg-green-600/30"
                   : isLocked
-                    ? "bg-zinc-900 text-zinc-600 border-zinc-800 cursor-not-allowed"
+                    ? "bg-slate-100 dark:bg-zinc-900 text-slate-400 dark:text-zinc-600 border-slate-200 dark:border-zinc-800 cursor-not-allowed"
                     : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent hover:shadow-lg hover:shadow-blue-500/20"
               )
             )}
           >
-            <CheckCircle className={`w-4 h-4 ${isCompleted ? 'fill-current text-green-500' : ''}`} />
+            <CheckCircle className={`w-4 h-4 ${isCompleted ? 'fill-current text-emerald-600 dark:text-green-500' : ''}`} />
             {isCompleted ? 'Mark as Incomplete' : isLocked ? 'Prerequisites Required' : 'Mark as Completed'}
           </button>
           
           <button 
             onClick={() => setSelectedNode(null)}
-            className="w-full text-center text-xs text-zinc-500 hover:text-zinc-300 py-1.5 transition-colors"
+            className="w-full text-center text-xs text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300 py-1.5 transition-colors"
           >
             Dismiss Detail Pane
           </button>
