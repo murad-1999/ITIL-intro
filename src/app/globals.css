@@ -26,3 +26,10 @@ body {
     text-wrap: balance;
   }
 }
+
+/* React Flow MiniMap Viewport Cursor Styling */
+.react-flow__minimap-active {
+  stroke: #3b82f6 !important;
+  stroke-width: 3px !important;
+  fill: rgba(59, 130, 246, 0.15) !important;
+}

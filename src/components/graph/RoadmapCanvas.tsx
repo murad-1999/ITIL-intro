@@ -167,8 +167,10 @@ const RoadmapFlow = () => {
           if (category === 'concepts') return '#a855f7';
           return '#e2e8f0';
         }}
-        maskColor="rgba(244, 244, 245, 0.4)"
-        className="dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
+        maskColor="rgba(9, 9, 11, 0.75)"
+        className="dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl"
+        pannable
+        zoomable
       />
       <ZoomControls />
     </ReactFlow>

@@ -25,9 +25,11 @@ export function calculateGraphLayout(
     g.setNode(node.id, { width, height });
   });
 
-  // Set edges in dagre
+  // Set edges in dagre (exclude feedback loops to prevent layout cycles/distortion)
   edges.forEach((edge) => {
-    g.setEdge(edge.source, edge.target);
+    if (edge.isFeedbackLoop !== true) {
+      g.setEdge(edge.source, edge.target);
+    }
   });
 
   // Calculate layout
@@ -71,6 +73,13 @@ export function calculateGraphLayout(
         width: 16,
         height: 16,
       },
+      labelStyle: isFeedback
+        ? { fill: '#fca5a5', fontWeight: 600, fontSize: 10 }
+        : { fill: '#94a3b8', fontSize: 10 },
+      labelBgStyle: isFeedback
+        ? { fill: '#7f1d1d', fillOpacity: 0.85, rx: 4, ry: 4 }
+        : { fill: '#18181b', fillOpacity: 0.85, rx: 4, ry: 4 },
+      labelBgPadding: [6, 4] as [number, number],
     };
   });
 

@@ -122,6 +122,22 @@ export default function Home() {
             <div className="w-2.5 h-2.5 rounded bg-green-500" />
             <span className="text-zinc-400">Completed</span>
           </div>
+
+          <div className="w-full h-px bg-zinc-800 my-1" />
+
+          <span className="font-bold text-zinc-300 uppercase tracking-wider mb-1">Relationships</span>
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-0.5 bg-zinc-500 relative">
+              <div className="absolute right-0 -top-[3px] w-2 h-2 border-t-2 border-r-2 border-zinc-500 transform rotate-45" />
+            </div>
+            <span className="text-zinc-400">Prerequisite / Next Steps</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-0.5 border-t-2 border-dashed border-red-500 relative">
+              <div className="absolute right-0 -top-[3.5px] w-2 h-2 border-t-2 border-r-2 border-red-500 transform rotate-45" />
+            </div>
+            <span className="text-zinc-400">Feedback Loop (Continuous alignment)</span>
+          </div>
         </div>
 
         {/* Global Slide-over Drawer component */}

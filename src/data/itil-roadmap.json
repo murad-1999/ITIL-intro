@@ -218,7 +218,7 @@
       "nodeType": "process_gate",
       "summary": "The initial inputs to the Service Value System (SVS).",
       "contentMarkdown": "# Opportunity & Demand\n\nThese are the starting points for the Service Value System (SVS):\n\n- **Opportunity:** Options or possibilities to add value for stakeholders.\n- **Demand:** Need or desire for products and services from internal or external consumers.",
-      "prerequisites": [],
+      "prerequisites": ["value-co-creation"],
       "resources": [],
       "width": 260,
       "height": 120
@@ -253,7 +253,7 @@
       "category": "service_value_chain",
       "nodeType": "process_gate",
       "summary": "Service Value Chain activity to define strategy, objectives, and direction.",
-      "contentMarkdown": "# Service Value Chain: Plan\n\n- **Purpose:** Ensure a shared understanding of the vision, current status, and improvement direction for all four dimensions.",
+      "contentMarkdown": "# Service Value Chain: Plan\n\n- **Purpose:** Ensure a shared understanding of the vision, current status, and improvement direction for all four dimensions.\n\n### Feedback Loop: Change Rejected\nReceives feedback from the **Change Enablement** practice when changes are not authorized. Since plans and strategies might need refinement to address the rejection reasons, the loop feeds back into the Plan activity to adjust priorities, budgets, or architectures before re-initiating.",
       "prerequisites": ["governance", "svc-engage"],
       "resources": [],
       "width": 260,
@@ -368,7 +368,7 @@
       "category": "practices_detail",
       "nodeType": "practice_node",
       "summary": "Maximize the number of successful IT changes by ensuring risks are properly assessed and authorized.",
-      "contentMarkdown": "# Change Enablement (High-Detail Practice)\n\n- **Purpose:** Maximize the number of successful service and product changes by ensuring that risks are properly assessed, authorizing changes to proceed, and managing the change schedule.\n- **Types of Changes:**\n  - **Standard Changes:** Low risk, pre-authorized, common, and follow strict procedures.\n  - **Normal Changes:** Require full risk assessment, scheduling, and CAB approval.\n  - **Emergency Changes:** Must be implemented immediately (e.g., security patch). Uses an expedited approval pipeline.",
+      "contentMarkdown": "# Change Enablement (High-Detail Practice)\n\n- **Purpose:** Maximize the number of successful service and product changes by ensuring that risks are properly assessed, authorizing changes to proceed, and managing the change schedule.\n- **Types of Changes:**\n  - **Standard Changes:** Low risk, pre-authorized, common, and follow strict procedures.\n  - **Normal Changes:** Require full risk assessment, scheduling, and CAB approval.\n  - **Emergency Changes:** Must be implemented immediately (e.g., security patch). Uses an expedited approval pipeline.\n\n### Feedback Loop: Change Rejected\nWhen a change request is assessed by Change Enablement and rejected (e.g., due to excessive risk, lack of budget alignment, or poor planning), it triggers a red feedback loop back to the **SVC: Plan** stage. This allows the organization to replan, refine the requirements, and align strategy before proposing the change again.",
       "prerequisites": ["svc-design-transition"],
       "resources": [],
       "width": 260,
@@ -520,6 +520,13 @@
     }
   ],
   "edges": [
+    {
+      "id": "e-concepts-to-svs",
+      "source": "value-co-creation",
+      "target": "opportunity-demand",
+      "label": "applies to",
+      "isFeedbackLoop": false
+    },
     {
       "id": "e-concept-relation",
       "source": "value-co-creation",
