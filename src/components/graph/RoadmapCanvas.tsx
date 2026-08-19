@@ -16,7 +16,7 @@ import {
   type Node
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, Maximize } from 'lucide-react';
 
 import { useRoadmapStore } from '../../store/useRoadmapStore';
 import { calculateGraphLayout } from '../../lib/layout';
@@ -29,23 +29,84 @@ const nodeTypes: NodeTypes = {
 };
 
 const ZoomControls = () => {
-  const { zoomIn, zoomOut } = useReactFlow();
+  const { zoomIn, zoomOut, zoomTo, fitView, getViewport } = useReactFlow();
+  const [zoomLevel, setZoomLevel] = React.useState(1.0);
+
+  // Sync the slider position with the actual viewport zoom
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      try {
+        const { zoom } = getViewport();
+        setZoomLevel(zoom);
+      } catch {
+        // Safe fallback in case react flow instance isn't ready
+      }
+    }, 200);
+    return () => clearInterval(interval);
+  }, [getViewport]);
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextZoom = parseFloat(e.target.value);
+    setZoomLevel(nextZoom);
+    zoomTo(nextZoom);
+  };
 
   return (
-    <div className="absolute bottom-6 right-6 z-50 flex flex-col gap-2 bg-zinc-950/80 border border-zinc-800 p-1.5 rounded-xl shadow-lg backdrop-blur-md pointer-events-auto">
+    <div className="absolute bottom-6 right-6 z-50 flex items-center gap-3 bg-zinc-950/90 border border-zinc-800 p-2.5 rounded-xl shadow-2xl backdrop-blur-md pointer-events-auto select-none">
+      {/* Zoom Level Indicator */}
+      <span className="text-[10px] font-mono text-zinc-400 min-w-[32px] text-right">
+        {Math.round(zoomLevel * 100)}%
+      </span>
+
+      {/* Zoom Out Button */}
       <button
-        onClick={() => zoomIn({ duration: 150 })}
-        className="p-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 hover:text-white transition-colors duration-150 flex items-center justify-center shadow-sm"
-        title="Zoom In"
-      >
-        <Plus className="w-4 h-4" />
-      </button>
-      <button
-        onClick={() => zoomOut({ duration: 150 })}
-        className="p-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 hover:text-white transition-colors duration-150 flex items-center justify-center shadow-sm"
+        onClick={() => {
+          zoomOut({ duration: 150 });
+          setTimeout(() => setZoomLevel(getViewport().zoom), 160);
+        }}
+        className="p-1.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 hover:text-white transition-all flex items-center justify-center shadow-sm"
         title="Zoom Out"
       >
-        <Minus className="w-4 h-4" />
+        <Minus className="w-3.5 h-3.5" />
+      </button>
+
+      {/* Zoom Slider */}
+      <input
+        type="range"
+        min="0.05"
+        max="2.5"
+        step="0.05"
+        value={zoomLevel}
+        onChange={handleSliderChange}
+        className="w-24 h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400 transition-colors"
+        title="Zoom Slider"
+      />
+
+      {/* Zoom In Button */}
+      <button
+        onClick={() => {
+          zoomIn({ duration: 150 });
+          setTimeout(() => setZoomLevel(getViewport().zoom), 160);
+        }}
+        className="p-1.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 hover:text-white transition-all flex items-center justify-center shadow-sm"
+        title="Zoom In"
+      >
+        <Plus className="w-3.5 h-3.5" />
+      </button>
+
+      <div className="w-px h-5 bg-zinc-800" />
+
+      {/* Recenter / Focus Canvas View Button (other than reset progress) */}
+      <button
+        onClick={() => {
+          fitView({ duration: 300, padding: 0.05 });
+          setTimeout(() => setZoomLevel(getViewport().zoom), 310);
+        }}
+        className="p-1.5 px-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-750 hover:text-blue-400 rounded-lg text-zinc-300 transition-all flex items-center gap-1.5 text-[11px] font-medium shadow-sm"
+        title="Fit whole roadmap within canvas view"
+      >
+        <Maximize className="w-3.5 h-3.5" />
+        Recenter
       </button>
     </div>
   );
