@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRoadmapStore } from '../store/useRoadmapStore';
 import { NodeDetailSheet } from '../components/drawer/NodeDetailSheet';
+import { MasterGridView } from '../components/grid/MasterGridView';
 import rawRoadmapData from '../data/itil-roadmap.json';
 import { 
   Compass, 
@@ -14,7 +15,9 @@ import {
   Target,
   Keyboard,
   Sun,
-  Moon
+  Moon,
+  LayoutGrid,
+  ListFilter
 } from 'lucide-react';
 
 // Dynamically load the RoadmapCanvas with SSR disabled to prevent hydration failures
@@ -38,7 +41,9 @@ export default function Home() {
     isChangeManagerFocusMode,
     toggleChangeManagerFocusMode,
     theme,
-    toggleTheme
+    toggleTheme,
+    viewMode,
+    setViewMode
   } = useRoadmapStore();
 
   const [mounted, setMounted] = useState(false);
@@ -90,6 +95,34 @@ export default function Home() {
 
         {mounted && hasHydrated && (
           <div className="flex items-center flex-wrap gap-3">
+            {/* View Mode Toggle: Interactive Canvas vs All Nodes Grid */}
+            <div className="flex items-center bg-slate-100 dark:bg-zinc-900 p-1 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm">
+              <button
+                onClick={() => setViewMode('canvas')}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                  viewMode === 'canvas'
+                    ? 'bg-white dark:bg-zinc-800 text-blue-600 dark:text-blue-400 shadow-sm font-semibold'
+                    : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+                title="Interactive Canvas Graph View"
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Canvas Graph</span>
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                  viewMode === 'grid'
+                    ? 'bg-white dark:bg-zinc-800 text-blue-600 dark:text-blue-400 shadow-sm font-semibold'
+                    : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+                title="All Nodes Master Grid View"
+              >
+                <ListFilter className="w-3.5 h-3.5" />
+                <span>Master Grid</span>
+              </button>
+            </div>
+
             {/* Search Input Bar */}
             <div className="relative flex items-center">
               <Search className="w-4 h-4 text-slate-400 dark:text-zinc-400 absolute left-3 pointer-events-none" />
@@ -180,60 +213,67 @@ export default function Home() {
         )}
       </header>
 
-      {/* Main Workspace: Full Screen Canvas */}
+      {/* Main Workspace: Full Screen Canvas vs Grid */}
       <main className="flex-1 flex flex-col relative p-4 h-[calc(100vh-73px)] min-h-0">
         
-        {/* Canvas container */}
+        {/* Workspace container */}
         <div className="flex-1 min-h-0 w-full relative">
           <div className="absolute inset-0">
-            <RoadmapCanvas />
+            {viewMode === 'canvas' ? (
+              <RoadmapCanvas />
+            ) : (
+              <MasterGridView />
+            )}
           </div>
         </div>
 
-        {/* Float instructions banner at top-left of canvas */}
-        <div className="absolute top-8 left-8 p-3 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-zinc-800 text-[10px] text-slate-600 dark:text-zinc-400 pointer-events-none flex flex-col gap-1 shadow-lg max-w-xs transition-colors">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-            <span>Click any node to view definitions, interactive matrix, and resources.</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-500 dark:text-zinc-500 pt-0.5 border-t border-slate-200 dark:border-zinc-800/80">
-            <Keyboard className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400 shrink-0" />
-            <span>Use <kbd className="px-1 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded text-slate-700 dark:text-zinc-300 font-mono text-[9px]">Tab</kbd> and <kbd className="px-1 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded text-slate-700 dark:text-zinc-300 font-mono text-[9px]">Enter</kbd> for keyboard navigation.</span>
-          </div>
-        </div>
-
-        {/* Floating color legend at bottom-left */}
-        <div className="absolute bottom-8 left-8 p-3 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-zinc-800 text-[10px] space-y-1.5 shadow-lg flex flex-col pointer-events-none transition-colors">
-          <span className="font-bold text-slate-800 dark:text-zinc-300 uppercase tracking-wider mb-1">Status Key</span>
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded bg-slate-300 dark:bg-zinc-700 border border-dashed border-slate-400 dark:border-zinc-500" />
-            <span className="text-slate-600 dark:text-zinc-400">Locked (Prerequisites missing)</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded bg-blue-500" />
-            <span className="text-slate-600 dark:text-zinc-400">Available (Ready to study)</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded bg-emerald-500" />
-            <span className="text-slate-600 dark:text-zinc-400">Completed</span>
-          </div>
-
-          <div className="w-full h-px bg-slate-200 dark:bg-zinc-800 my-1" />
-
-          <span className="font-bold text-slate-800 dark:text-zinc-300 uppercase tracking-wider mb-1">Relationships</span>
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-0.5 bg-slate-400 dark:bg-zinc-500 relative">
-              <div className="absolute right-0 -top-[3px] w-2 h-2 border-t-2 border-r-2 border-slate-400 dark:border-zinc-500 transform rotate-45" />
+        {/* Float instructions banner & legend only in Canvas view */}
+        {viewMode === 'canvas' && (
+          <>
+            <div className="absolute top-8 left-8 p-3 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-zinc-800 text-[10px] text-slate-600 dark:text-zinc-400 pointer-events-none flex flex-col gap-1 shadow-lg max-w-xs transition-colors">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                <span>Click any node to view definitions, interactive matrix, and resources.</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-500 dark:text-zinc-500 pt-0.5 border-t border-slate-200 dark:border-zinc-800/80">
+                <Keyboard className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400 shrink-0" />
+                <span>Use <kbd className="px-1 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded text-slate-700 dark:text-zinc-300 font-mono text-[9px]">Tab</kbd> and <kbd className="px-1 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded text-slate-700 dark:text-zinc-300 font-mono text-[9px]">Enter</kbd> for keyboard navigation.</span>
+              </div>
             </div>
-            <span className="text-slate-600 dark:text-zinc-400">Prerequisite / Next Steps</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-0.5 border-t-2 border-dashed border-red-500 relative">
-              <div className="absolute right-0 -top-[3.5px] w-2 h-2 border-t-2 border-r-2 border-red-500 transform rotate-45" />
+
+            <div className="absolute bottom-8 left-8 p-3 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-zinc-800 text-[10px] space-y-1.5 shadow-lg flex flex-col pointer-events-none transition-colors">
+              <span className="font-bold text-slate-800 dark:text-zinc-300 uppercase tracking-wider mb-1">Status Key</span>
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded bg-slate-300 dark:bg-zinc-700 border border-dashed border-slate-400 dark:border-zinc-500" />
+                <span className="text-slate-600 dark:text-zinc-400">Locked (Prerequisites missing)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded bg-blue-500" />
+                <span className="text-slate-600 dark:text-zinc-400">Available (Ready to study)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded bg-emerald-500" />
+                <span className="text-slate-600 dark:text-zinc-400">Completed</span>
+              </div>
+
+              <div className="w-full h-px bg-slate-200 dark:bg-zinc-800 my-1" />
+
+              <span className="font-bold text-slate-800 dark:text-zinc-300 uppercase tracking-wider mb-1">Relationships</span>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-0.5 bg-slate-400 dark:bg-zinc-500 relative">
+                  <div className="absolute right-0 -top-[3px] w-2 h-2 border-t-2 border-r-2 border-slate-400 dark:border-zinc-500 transform rotate-45" />
+                </div>
+                <span className="text-slate-600 dark:text-zinc-400">Prerequisite / Next Steps</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-0.5 border-t-2 border-dashed border-red-500 relative">
+                  <div className="absolute right-0 -top-[3.5px] w-2 h-2 border-t-2 border-r-2 border-red-500 transform rotate-45" />
+                </div>
+                <span className="text-slate-600 dark:text-zinc-400">Feedback Loop (Continuous alignment)</span>
+              </div>
             </div>
-            <span className="text-slate-600 dark:text-zinc-400">Feedback Loop (Continuous alignment)</span>
-          </div>
-        </div>
+          </>
+        )}
 
         {/* Global Slide-over Drawer component */}
         <NodeDetailSheet />
