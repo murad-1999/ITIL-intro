@@ -177,7 +177,6 @@ const RoadmapFlow = () => {
       defaultMarkerColor={theme === 'dark' ? '#94a3b8' : '#64748b'}
     >
       <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dotColor} />
-      <Controls showInteractive={false} showZoom={false} />
       <MiniMap 
         nodeColor={(node: Node) => {
           const category = (node.data as { node?: { category?: string } })?.node?.category;

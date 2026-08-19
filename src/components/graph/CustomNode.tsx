@@ -114,9 +114,9 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
         <span 
           className={twMerge(
             clsx("text-[9px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase flex items-center gap-1", {
-              "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400": nodeStatus === 'locked',
-              "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300": nodeStatus === 'available',
-              "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300": nodeStatus === 'completed',
+              "bg-slate-100 text-slate-600 dark:bg-zinc-800 dark:text-zinc-300": nodeStatus === 'locked',
+              "bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200": nodeStatus === 'available',
+              "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200": nodeStatus === 'completed',
             })
           )}
         >
@@ -126,9 +126,9 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
           {getCategoryLabel(node.category)}
         </span>
         
-        <div className="text-zinc-400 dark:text-zinc-500">
+        <div className="text-slate-400 dark:text-zinc-400">
           {nodeStatus === 'completed' ? (
-            <CheckCircle2 className="w-4 h-4 text-green-500 dark:text-green-400" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           ) : nodeStatus === 'locked' ? (
             <Lock className="w-3.5 h-3.5" />
           ) : (
@@ -138,15 +138,15 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
       </div>
 
       <div className="flex-1 flex flex-col justify-center my-1 overflow-hidden">
-        <h4 className="font-semibold text-xs leading-tight line-clamp-1">
+        <h4 className="font-semibold text-xs leading-tight line-clamp-1 text-slate-900 dark:text-white">
           {node.title}
         </h4>
-        <p className="text-[10px] text-zinc-500 dark:text-zinc-400 leading-snug line-clamp-2 mt-0.5">
+        <p className="text-[10px] text-slate-600 dark:text-zinc-200 leading-snug line-clamp-2 mt-0.5">
           {node.summary}
         </p>
       </div>
 
-      <div className="flex items-center justify-between text-[8px] text-zinc-400 dark:text-zinc-500">
+      <div className="flex items-center justify-between text-[8px] text-slate-500 dark:text-zinc-300">
         <span>{isChangeManagerFocusMode && isFocusedNode ? 'CM Focus Node' : ''}</span>
         <span>{nodeStatus === 'locked' ? 'Prerequisites required' : nodeStatus === 'available' ? 'Ready to learn' : 'Completed'}</span>
       </div>

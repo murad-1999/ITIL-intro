@@ -9,7 +9,7 @@
 
 .dark {
   --background: #09090b;
-  --foreground: #f4f4f5;
+  --foreground: #ffffff;
 }
 
 body {
@@ -31,4 +31,16 @@ body {
   stroke: #3b82f6 !important;
   stroke-width: 3px !important;
   fill: rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Hide default ReactFlow controls box to prevent white corner artifacts */
+.react-flow__controls {
+  display: none !important;
+}
+
+.react-flow__panel.bottom.left,
+.react-flow__panel.top.left {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
