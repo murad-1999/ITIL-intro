@@ -368,7 +368,7 @@
       "category": "practices_detail",
       "nodeType": "practice_node",
       "summary": "Maximize the number of successful IT changes by ensuring risks are properly assessed and authorized.",
-      "contentMarkdown": "# Change Enablement (High-Detail Practice)\n\n- **Purpose:** Maximize the number of successful service and product changes by ensuring that risks are properly assessed, authorizing changes to proceed, and managing the change schedule.\n- **Types of Changes:**\n  - **Standard Changes:** Low risk, pre-authorized, common, and follow strict procedures.\n  - **Normal Changes:** Require full risk assessment, scheduling, and CAB approval.\n  - **Emergency Changes:** Must be implemented immediately (e.g., security patch). Uses an expedited approval pipeline.\n\n### Feedback Loop: Change Rejected\nWhen a change request is assessed by Change Enablement and rejected (e.g., due to excessive risk, lack of budget alignment, or poor planning), it triggers a red feedback loop back to the **SVC: Plan** stage. This allows the organization to replan, refine the requirements, and align strategy before proposing the change again.",
+      "contentMarkdown": "# Change Enablement (High-Detail Practice)\n\n- **Purpose:** Maximize the number of successful service and product changes by ensuring that risks are properly assessed, authorizing changes to proceed, and managing the change schedule.\n- **Modern Change Authority:** Rather than relying on a centralized Change Advisory Board (CAB) as a bottleneck, ITIL 4 advocates for assigning a **Change Authority** based on change type and risk level (e.g., automated checks in CI/CD pipelines, team lead approvals, or peer reviews).\n- **Types of Changes:**\n  - **Standard Changes:** Low risk, pre-authorized, common, and follow strict automated procedures (e.g., automated patch deployments).\n  - **Normal Changes:** Require risk assessment and authorization from the designated Change Authority (which may be a CAB only for high-risk, high-impact legacy changes).\n  - **Emergency Changes:** Must be implemented immediately (e.g., critical security patch). Uses an expedited, pre-defined authorization pipeline.\n\n### Feedback Loop: Change Rejected\nWhen a change request is assessed by Change Enablement and rejected (e.g., due to excessive risk, lack of budget alignment, or poor planning), it triggers a red feedback loop back to the **SVC: Plan** stage. This allows the organization to replan, refine requirements, and align strategy before proposing the change again.",
       "prerequisites": ["svc-design-transition"],
       "resources": [],
       "width": 260,
@@ -761,18 +761,35 @@
       "id": "e-practice-release",
       "source": "change-enablement",
       "target": "release-management",
+      "label": "Authorizes Feature Release",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-deploy",
       "source": "change-enablement",
       "target": "deployment-management",
+      "label": "Authorizes Tech Deployment",
       "isFeedbackLoop": false
     },
     {
       "id": "e-practice-config",
       "source": "it-asset-management",
       "target": "service-configuration-management",
+      "label": "Populates CMDB Assets",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-problem-change",
+      "source": "problem-management",
+      "target": "change-enablement",
+      "label": "Submits RFC for Permanent Fix",
+      "isFeedbackLoop": false
+    },
+    {
+      "id": "e-practice-change-config",
+      "source": "change-enablement",
+      "target": "service-configuration-management",
+      "label": "Queries CMDB & Risk Impact",
       "isFeedbackLoop": false
     },
     {

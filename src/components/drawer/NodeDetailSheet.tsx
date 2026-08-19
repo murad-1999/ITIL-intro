@@ -11,10 +11,122 @@ import {
   FileText, 
   BookOpen, 
   PlayCircle, 
-  HelpCircle
+  HelpCircle,
+  ShieldAlert,
+  Check,
+  AlertCircle
 } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { clsx } from 'clsx';
+
+// Interactive Change Authority Decision Matrix Mini-Assessment for Change Enablement
+const ChangeAuthorityQuiz = () => {
+  const scenarios = [
+    {
+      id: 1,
+      scenario: "Routine automated kernel patch deployment via CI/CD testing pipeline on web servers.",
+      options: [
+        { label: "Standard Change", correct: true, reason: "Low risk, frequent, pre-authorized, follows strict automated procedure." },
+        { label: "Normal Change (CAB)", correct: false, reason: "Incorrect: Routing low-risk routine changes to a CAB creates unnecessary bottlenecks." },
+        { label: "Emergency Change", correct: false, reason: "Incorrect: This is a scheduled routine deployment, not an urgent crisis." }
+      ]
+    },
+    {
+      id: 2,
+      scenario: "Migrating the core ERP database to cloud multi-region infrastructure over weekend.",
+      options: [
+        { label: "Standard Change", correct: false, reason: "Incorrect: Major infrastructure shifts carry high risk and impact, so cannot be pre-authorized." },
+        { label: "Normal Change (Change Authority / CAB)", correct: true, reason: "High risk & organizational impact. Requires thorough risk assessment and designated Change Authority (e.g. CAB/Architecture review)." },
+        { label: "Emergency Change", correct: false, reason: "Incorrect: This is a planned major initiative, not an active outage or emergency." }
+      ]
+    },
+    {
+      id: 3,
+      scenario: "Active zero-day remote code execution vulnerability being exploited in production server.",
+      options: [
+        { label: "Standard Change", correct: false, reason: "Incorrect: Requires rapid response outside normal pre-approved standard scope." },
+        { label: "Normal Change", correct: false, reason: "Incorrect: Waiting for full normal change lead time could result in severe data breach." },
+        { label: "Emergency Change", correct: true, reason: "Requires immediate implementation. Uses an expedited emergency change authorization pipeline." }
+      ]
+    }
+  ];
+
+  const [activeScenarioIndex, setActiveScenarioIndex] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
+
+  const currentScenario = scenarios[activeScenarioIndex];
+
+  return (
+    <div className="my-6 p-4 rounded-xl bg-blue-950/20 border border-blue-800/60 text-zinc-200 space-y-4">
+      <div className="flex items-center justify-between border-b border-blue-900/60 pb-2">
+        <div className="flex items-center gap-2">
+          <ShieldAlert className="w-4 h-4 text-blue-400" />
+          <h4 className="text-xs font-bold text-blue-300 uppercase tracking-wider">
+            ITIL 4 Change Authority Decision Simulator
+          </h4>
+        </div>
+        <span className="text-[10px] font-mono text-zinc-400">
+          Scenario {activeScenarioIndex + 1}/{scenarios.length}
+        </span>
+      </div>
+
+      <p className="text-xs font-medium text-zinc-200 leading-relaxed">
+        {currentScenario.scenario}
+      </p>
+
+      <div className="space-y-2">
+        {currentScenario.options.map((opt, idx) => {
+          const isSelected = selectedAnswers[currentScenario.id] === idx;
+          return (
+            <button
+              key={idx}
+              onClick={() => setSelectedAnswers(prev => ({ ...prev, [currentScenario.id]: idx }))}
+              className={twMerge(
+                clsx(
+                  "w-full text-left p-2.5 rounded-lg border text-xs transition-all flex flex-col gap-1",
+                  isSelected
+                    ? opt.correct
+                      ? "bg-emerald-950/40 border-emerald-500/80 text-emerald-200"
+                      : "bg-red-950/40 border-red-500/80 text-red-200"
+                    : "bg-zinc-900/60 border-zinc-800 hover:border-zinc-700 text-zinc-300"
+                )
+              )}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold">{opt.label}</span>
+                {isSelected && (
+                  opt.correct ? <Check className="w-4 h-4 text-emerald-400" /> : <AlertCircle className="w-4 h-4 text-red-400" />
+                )}
+              </div>
+              {isSelected && (
+                <p className="text-[11px] opacity-90 leading-tight mt-0.5">
+                  {opt.reason}
+                </p>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="flex items-center justify-between pt-2">
+        <button
+          onClick={() => setActiveScenarioIndex(prev => Math.max(0, prev - 1))}
+          disabled={activeScenarioIndex === 0}
+          className="text-[11px] text-zinc-400 hover:text-zinc-200 disabled:opacity-30 disabled:pointer-events-none"
+        >
+          &larr; Previous Scenario
+        </button>
+        <button
+          onClick={() => setActiveScenarioIndex(prev => Math.min(scenarios.length - 1, prev + 1))}
+          disabled={activeScenarioIndex === scenarios.length - 1}
+          className="text-[11px] text-blue-400 font-semibold hover:text-blue-300 disabled:opacity-30 disabled:pointer-events-none"
+        >
+          Next Scenario &rarr;
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export const NodeDetailSheet = () => {
   const { 
@@ -95,7 +207,7 @@ export const NodeDetailSheet = () => {
       <div 
         className={twMerge(
           clsx(
-            "fixed right-0 top-0 bottom-0 w-full sm:w-[480px] bg-zinc-950/95 border-l border-zinc-800 text-zinc-100 z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-out transform",
+            "fixed right-0 top-0 bottom-0 w-full sm:w-[500px] bg-zinc-950/95 border-l border-zinc-800 text-zinc-100 z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-out transform",
             isOpen ? "translate-x-0" : "translate-x-full"
           )
         )}
@@ -111,6 +223,7 @@ export const NodeDetailSheet = () => {
           <button 
             onClick={() => setSelectedNode(null)}
             className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors"
+            title="Close drawer (Esc)"
           >
             <X className="w-5 h-5" />
           </button>
@@ -151,6 +264,11 @@ export const NodeDetailSheet = () => {
             </p>
           </div>
 
+          {/* Interactive Change Authority Decision Simulator if change-enablement */}
+          {node.id === 'change-enablement' && (
+            <ChangeAuthorityQuiz />
+          )}
+
           {/* Full Markdown explanation render */}
           <div className="space-y-4 prose prose-invert prose-xs max-w-none">
             {node.contentMarkdown.split('\n\n').map((paragraph, index) => {
@@ -178,7 +296,7 @@ export const NodeDetailSheet = () => {
                 );
               }
               
-              // Custom table mapping for Utility/Warranty
+              // Custom table mapping for Utility/Warranty or comparisons
               if (paragraph.includes('|')) {
                 const rows = paragraph.split('\n').filter(r => r.trim() !== '');
                 if (rows.length > 1) {

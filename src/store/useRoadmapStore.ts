@@ -3,13 +3,30 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 export type NodeProgressStatus = 'completed' | 'available' | 'locked';
 
+export const CHANGE_MANAGER_FOCUS_NODE_IDS = [
+  'change-enablement',
+  'release-management',
+  'deployment-management',
+  'service-configuration-management',
+  'incident-management',
+  'problem-management',
+  'it-asset-management',
+  'governance',
+  'svc-plan',
+  'svc-design-transition'
+];
+
 interface RoadmapState {
   completedNodeIds: string[];
   selectedNodeId: string | null;
+  searchQuery: string;
+  isChangeManagerFocusMode: boolean;
   hasHydrated: boolean;
   
   setHasHydrated: (state: boolean) => void;
   setSelectedNode: (nodeId: string | null) => void;
+  setSearchQuery: (query: string) => void;
+  toggleChangeManagerFocusMode: () => void;
   toggleNodeCompletion: (nodeId: string) => void;
   resetProgress: () => void;
 }
@@ -19,10 +36,14 @@ export const useRoadmapStore = create<RoadmapState>()(
     (set) => ({
       completedNodeIds: [],
       selectedNodeId: null,
+      searchQuery: '',
+      isChangeManagerFocusMode: false,
       hasHydrated: false,
       
       setHasHydrated: (state) => set({ hasHydrated: state }),
       setSelectedNode: (nodeId) => set({ selectedNodeId: nodeId }),
+      setSearchQuery: (query) => set({ searchQuery: query }),
+      toggleChangeManagerFocusMode: () => set((state) => ({ isChangeManagerFocusMode: !state.isChangeManagerFocusMode })),
       toggleNodeCompletion: (nodeId) =>
         set((state) => {
           const isCompleted = state.completedNodeIds.includes(nodeId);
@@ -31,7 +52,7 @@ export const useRoadmapStore = create<RoadmapState>()(
             : [...state.completedNodeIds, nodeId];
           return { completedNodeIds: newCompleted };
         }),
-      resetProgress: () => set({ completedNodeIds: [], selectedNodeId: null }),
+      resetProgress: () => set({ completedNodeIds: [], selectedNodeId: null, searchQuery: '', isChangeManagerFocusMode: false }),
     }),
     {
       name: 'itil-roadmap-progression',

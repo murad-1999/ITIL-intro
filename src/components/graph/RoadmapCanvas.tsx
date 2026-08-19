@@ -52,7 +52,7 @@ const ZoomControls = () => {
   };
 
   return (
-    <div className="absolute bottom-6 right-6 z-50 flex items-center gap-3 bg-zinc-950/90 border border-zinc-800 p-2.5 rounded-xl shadow-2xl backdrop-blur-md pointer-events-auto select-none">
+    <div className="absolute bottom-6 right-[230px] z-50 flex items-center gap-3 bg-zinc-950/90 border border-zinc-800 p-2.5 rounded-xl shadow-2xl backdrop-blur-md pointer-events-auto select-none">
       {/* Zoom Level Indicator */}
       <span className="text-[10px] font-mono text-zinc-400 min-w-[32px] text-right">
         {Math.round(zoomLevel * 100)}%
@@ -114,6 +114,7 @@ const ZoomControls = () => {
 
 const RoadmapFlow = () => {
   const { setSelectedNode, selectedNodeId } = useRoadmapStore();
+  const { fitView } = useReactFlow();
 
   // Validate and layout the graph data deterministically
   const { initialNodes, initialEdges } = useMemo(() => {
@@ -124,6 +125,23 @@ const RoadmapFlow = () => {
 
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
+
+  // Set default initial view zoomed in to see at least 3 tiles clearly readable
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      fitView({
+        nodes: [
+          { id: 'value-co-creation' }, 
+          { id: 'service-relationships' }, 
+          { id: 'utility-warranty' },
+          { id: 'key-roles' }
+        ],
+        duration: 400,
+        padding: 0.25,
+      });
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [fitView]);
 
   // Handle node selection
   const onNodeClick: NodeMouseHandler = (_event, node) => {
@@ -151,13 +169,11 @@ const RoadmapFlow = () => {
       onPaneClick={onPaneClick}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
-      fitView
-      fitViewOptions={{ padding: 0.05, maxZoom: 1.0 }}
-      minZoom={0.05}
+      minZoom={0.1}
       maxZoom={2.5}
       defaultMarkerColor="#94a3b8"
     >
-      <Background variant={BackgroundVariant.Dots} gap={20} size={1} />
+      <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color="#3f3f46" />
       <Controls showInteractive={false} showZoom={false} />
       <MiniMap 
         nodeColor={(node: Node) => {
@@ -167,8 +183,8 @@ const RoadmapFlow = () => {
           if (category === 'concepts') return '#a855f7';
           return '#e2e8f0';
         }}
-        maskColor="rgba(9, 9, 11, 0.75)"
-        className="dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl"
+        maskColor="rgba(9, 9, 11, 0.85)"
+        className="bg-zinc-950 border border-zinc-800 rounded-xl"
         pannable
         zoomable
       />
@@ -179,7 +195,7 @@ const RoadmapFlow = () => {
 
 export const RoadmapCanvas = () => {
   return (
-    <div className="w-full h-full border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden bg-zinc-50 dark:bg-zinc-950 relative">
+    <div className="w-full h-full border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950 relative">
       <ReactFlowProvider>
         <RoadmapFlow />
       </ReactFlowProvider>

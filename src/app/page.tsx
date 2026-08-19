@@ -8,7 +8,11 @@ import rawRoadmapData from '../data/itil-roadmap.json';
 import { 
   Compass, 
   Sparkles,
-  RotateCcw
+  RotateCcw,
+  Search,
+  X,
+  Target,
+  Keyboard
 } from 'lucide-react';
 
 // Dynamically load the RoadmapCanvas with SSR disabled to prevent hydration failures
@@ -26,7 +30,11 @@ export default function Home() {
   const { 
     completedNodeIds, 
     resetProgress,
-    hasHydrated 
+    hasHydrated,
+    searchQuery,
+    setSearchQuery,
+    isChangeManagerFocusMode,
+    toggleChangeManagerFocusMode
   } = useRoadmapStore();
 
   const [mounted, setMounted] = useState(false);
@@ -39,10 +47,19 @@ export default function Home() {
     ? Math.round((completedNodeIds.length / rawRoadmapData.nodes.length) * 100)
     : 0;
 
+  // Search match count
+  const searchMatchCount = searchQuery.trim()
+    ? rawRoadmapData.nodes.filter((node) =>
+        node.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        node.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        node.category.toLowerCase().includes(searchQuery.toLowerCase())
+      ).length
+    : 0;
+
   return (
     <div className="min-h-screen bg-zinc-900 text-zinc-100 flex flex-col font-sans">
       {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+      <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 sticky top-0 z-50">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-lg text-white shadow-lg shadow-blue-500/20">
             <Compass className="w-6 h-6 animate-spin-slow" />
@@ -59,18 +76,58 @@ export default function Home() {
         </div>
 
         {mounted && hasHydrated && (
-          <div className="flex items-center gap-6">
+          <div className="flex items-center flex-wrap gap-3">
+            {/* Search Input Bar */}
+            <div className="relative flex items-center">
+              <Search className="w-4 h-4 text-zinc-400 absolute left-3 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search nodes (e.g. Risk, CAB, SLA)..."
+                className="w-56 md:w-64 bg-zinc-900 border border-zinc-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl pl-9 pr-8 py-1.5 text-xs text-zinc-200 placeholder:text-zinc-500 outline-none transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 p-0.5 text-zinc-400 hover:text-white rounded-md transition-colors"
+                  title="Clear search"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+              {searchQuery.trim() && (
+                <span className="absolute right-8 text-[10px] text-amber-400 font-mono font-medium">
+                  {searchMatchCount}
+                </span>
+              )}
+            </div>
+
+            {/* Change Manager Focus Mode Toggle */}
+            <button
+              onClick={toggleChangeManagerFocusMode}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all duration-200 shadow-sm ${
+                isChangeManagerFocusMode
+                  ? 'bg-blue-600/20 text-blue-300 border-blue-500/80 shadow-blue-500/20 ring-1 ring-blue-500'
+                  : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-zinc-200'
+              }`}
+              title="Toggle Change Manager Focus Path"
+            >
+              <Target className={`w-3.5 h-3.5 ${isChangeManagerFocusMode ? 'text-blue-400 animate-pulse' : 'text-zinc-400'}`} />
+              <span>Change Manager Focus</span>
+            </button>
+
             {/* Progress indicators */}
-            <div className="flex items-center gap-3 bg-zinc-900/60 border border-zinc-800/80 px-4 py-2 rounded-xl">
-              <span className="text-xs text-zinc-400 font-medium">Syllabus Mastery:</span>
-              <div className="w-40 bg-zinc-800 h-2.5 rounded-full overflow-hidden border border-zinc-700 relative">
+            <div className="flex items-center gap-3 bg-zinc-900/60 border border-zinc-800/80 px-3 py-1.5 rounded-xl">
+              <span className="text-xs text-zinc-400 font-medium hidden sm:inline">Syllabus Mastery:</span>
+              <div className="w-28 sm:w-36 bg-zinc-800 h-2.5 rounded-full overflow-hidden border border-zinc-700 relative">
                 <div 
                   className="bg-gradient-to-r from-green-500 to-emerald-400 h-full rounded-full transition-all duration-500"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
-              <span className="font-bold text-xs text-green-400 min-w-[50px] text-right">
-                {progressPercent}% ({completedNodeIds.length}/{rawRoadmapData.nodes.length})
+              <span className="font-bold text-xs text-green-400 min-w-[45px] text-right">
+                {progressPercent}%
               </span>
             </div>
 
@@ -81,11 +138,11 @@ export default function Home() {
                   resetProgress();
                 }
               }}
-              className="flex items-center gap-2 px-3 py-2 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 rounded-xl text-xs text-zinc-400 hover:text-zinc-200 transition-all duration-200"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 rounded-xl text-xs text-zinc-400 hover:text-zinc-200 transition-all duration-200"
               title="Reset progress"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              Reset
+              <span className="hidden sm:inline">Reset</span>
             </button>
           </div>
         )}
@@ -102,9 +159,15 @@ export default function Home() {
         </div>
 
         {/* Float instructions banner at top-left of canvas */}
-        <div className="absolute top-8 left-8 p-3 bg-zinc-950/80 backdrop-blur-md rounded-xl border border-zinc-800 text-[10px] text-zinc-400 pointer-events-none flex items-center gap-2 shadow-lg">
-          <Sparkles className="w-4 h-4 text-blue-400" />
-          <span>Click any node to view definitions, tables, resources, and mark completed.</span>
+        <div className="absolute top-8 left-8 p-3 bg-zinc-950/80 backdrop-blur-md rounded-xl border border-zinc-800 text-[10px] text-zinc-400 pointer-events-none flex flex-col gap-1 shadow-lg max-w-xs">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-blue-400 shrink-0" />
+            <span>Click any node to view definitions, interactive matrix, and resources.</span>
+          </div>
+          <div className="flex items-center gap-2 text-zinc-500 pt-0.5 border-t border-zinc-800/80">
+            <Keyboard className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+            <span>Use <kbd className="px-1 py-0.5 bg-zinc-800 rounded text-zinc-300 font-mono text-[9px]">Tab</kbd> and <kbd className="px-1 py-0.5 bg-zinc-800 rounded text-zinc-300 font-mono text-[9px]">Enter</kbd> for keyboard navigation.</span>
+          </div>
         </div>
 
         {/* Floating color legend at bottom-left */}
