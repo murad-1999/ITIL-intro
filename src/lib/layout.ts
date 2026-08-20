@@ -13,8 +13,8 @@ export function calculateGraphLayout(
   const g = new d.graphlib.Graph();
   g.setGraph({
     rankdir: direction,
-    nodesep: 140, // Increased vertical separation between node rows
-    ranksep: 240, // Increased horizontal separation between ranks for long labels
+    nodesep: 160, // Vertical separation between node rows
+    ranksep: 320, // Horizontal separation between ranks for edge labels and routing
   });
   g.setDefaultEdgeLabel(() => ({}));
 
