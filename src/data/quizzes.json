@@ -1,0 +1,991 @@
+{
+  "value-co-creation": {
+    "quizId": "value-co-creation",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "value-co-creation-q1",
+        "text": "A SaaS company builds a new analytics dashboard based entirely on internal product roadmaps without consulting any customers. Three months after launch, customer adoption is near zero. Which ITIL 4 concept did this failure most directly violate?",
+        "options": [
+          "Utility — the product lacked the core functionality customers needed.",
+          "Value co-creation — value was treated as something delivered to customers, rather than created with them.",
+          "Service Relationship Management — the provider failed to establish a formal contract.",
+          "Warranty — the service was not available reliably enough to drive adoption."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "value-co-creation-q2",
+        "text": "A customer adopts a new IT service but refuses to participate in feedback cycles, attend user training, or configure their profile settings. As a result, the service yields poor outcomes. According to ITIL 4's value co-creation model, how is responsibility understood?",
+        "options": [
+          "The service provider is solely responsible — they must ensure value regardless of consumer participation.",
+          "The service consumer is solely responsible — they failed to fulfill their operational duties.",
+          "Responsibility is shared — consumers must actively participate for value to be co-created.",
+          "The Change Authority is responsible — they authorized an incomplete service onboarding process."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "service-relationships": {
+    "quizId": "service-relationships",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "service-relationships-q1",
+        "text": "A cloud provider handles infrastructure provisioning and SLA reporting while the customer runs applications and provides usage feedback. When both organizations jointly review quarterly KPIs to adjust service targets, which activity is taking place?",
+        "options": [
+          "Service Provision — the provider is presenting service delivery reports.",
+          "Service Consumption — the customer is auditing resource utilization.",
+          "Service Relationship Management — joint activities performed to ensure continual value co-creation.",
+          "Supplier Management — contractual vendor performance is being reviewed."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "service-relationships-q2",
+        "text": "Your organization receives a managed security service. Your internal team handles end-user access requests, while the vendor manages firewalls and security tooling. The vendor's ongoing management of firewall rules is best described as:",
+        "options": [
+          "Service Consumption — the vendor is consuming your network infrastructure.",
+          "Service Relationship Management — the vendor is managing executive stakeholder links.",
+          "Service Provision — the vendor is performing activities to deliver agreed service components.",
+          "Supplier Management — the vendor is managing sub-contractor agreements."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "utility-warranty": {
+    "quizId": "utility-warranty",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "utility-warranty-q1",
+        "text": "An expense reporting application is available 99.9% of the time and consistently meets uptime targets. However, it cannot process multi-currency expenses — a critical requirement for the global finance team. How should this service be evaluated?",
+        "options": [
+          "It fails on Warranty — the uptime targets were not set high enough.",
+          "It delivers full value — Warranty is satisfied, which is the primary driver of value.",
+          "It fails on Utility — it does not support the specific business functionality required by the consumer.",
+          "It fails on both Utility and Warranty — a service must meet every user preference to deliver value."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "utility-warranty-q2",
+        "text": "A video conferencing tool supports all required meeting features and screen-sharing integrations. However, it suffers from weekly unannounced outages during peak hours and lacks an uptime SLA. How is this service characterized?",
+        "options": [
+          "It delivers full value because it satisfies all functional requirements (Utility).",
+          "It offers adequate Utility but insufficient Warranty, meaning it cannot reliably co-create value.",
+          "It offers adequate Warranty but insufficient Utility.",
+          "It fails on both Utility and Warranty because features alone cannot constitute Utility."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "key-roles": {
+    "quizId": "key-roles",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "key-roles-q1",
+        "text": "The Head of Finance signs off on the annual IT budget. The IT Director defines requirements and holds vendors accountable for service outcomes. Operations staff use the cloud services daily. Which assignment of ITIL 4 consumer roles is correct?",
+        "options": [
+          "Head of Finance = Customer; IT Director = Sponsor; Operations = User",
+          "Head of Finance = Sponsor; IT Director = Customer; Operations = User",
+          "Head of Finance = Customer; IT Director = User; Operations = Sponsor",
+          "Head of Finance = User; IT Director = Customer; Operations = Sponsor"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "key-roles-q2",
+        "text": "A product manager defines acceptance criteria for a new HR portal, negotiates SLAs with the vendor, and is accountable for service outcomes. HR staff log in daily to process payroll. In this context, the product manager is fulfilling which role?",
+        "options": [
+          "User — they interact directly with the vendor team.",
+          "Sponsor — they approve the overarching enterprise capital budget.",
+          "Customer — they define requirements and take responsibility for service consumption outcomes.",
+          "Service Provider — they oversee technical service delivery."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "cost-risk": {
+    "quizId": "cost-risk",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "cost-risk-q1",
+        "text": "A company migrates on-premises servers to the cloud, eliminating physical hardware maintenance costs and server administration overhead. However, monthly subscription fees and vendor lock-in risks now apply. How does ITIL 4 describe this outcome?",
+        "options": [
+          "A complete risk elimination — operational costs and risks were fully removed.",
+          "Services remove certain costs and risks for consumers while imposing new costs and risks.",
+          "A violation of the Optimize & Automate principle due to outsourcing core IT tasks.",
+          "A Standard Change outcome — all cloud migrations remove consumer risks automatically."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "cost-risk-q2",
+        "text": "An organization outsources cybersecurity operations to a managed security provider. Following a security breach, the organization claims 'all risk was transferred to the vendor.' How does ITIL 4 evaluate this claim?",
+        "options": [
+          "Correct — outsourcing transfers 100% of operational and business risk to the service provider.",
+          "Incorrect — services mitigate consumer risks but introduce provider-side risks; consumers must still govern remaining risk.",
+          "The vendor is solely liable because they signed a security SLA.",
+          "This represents a Warranty failure, proving the service was unfit for use."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "orgs-people": {
+    "quizId": "orgs-people",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "orgs-people-q1",
+        "text": "A global IT department deploys cutting-edge AI tooling, but teams suffer from unclear ownership, conflicting priorities, and absent escalation pathways. Service delivery remains chaotic despite the advanced technology. Which ITIL 4 dimension is most underdeveloped?",
+        "options": [
+          "Information & Technology — the AI software is improperly integrated.",
+          "Partners & Suppliers — external vendor contracts were not aligned.",
+          "Organizations & People — organizational structures, culture, roles, and responsibilities are poorly defined.",
+          "Value Streams & Processes — automated workflows lack detailed documentation."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "info-tech": {
+    "quizId": "info-tech",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "info-tech-q1",
+        "text": "A service team tracks incident history in isolated, personal spreadsheets. Critical system knowledge exists only in key employees' heads and is lost whenever staff depart. Which ITIL 4 dimension is failing most directly?",
+        "options": [
+          "Partners & Suppliers — vendors are failing to share operational telemetry.",
+          "Organizations & People — team members are exhibiting uncooperative behavior.",
+          "Information & Technology — the absence of centralized information management and shared knowledge assets.",
+          "Value Streams & Processes — the incident management process lacks formal approval steps."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "info-tech-q2",
+        "text": "Before selecting a new ITSM platform, a CIO asks: 'What data protection regulations govern how we store customer incident records in the cloud?' Which aspect of the Information & Technology dimension does this question address?",
+        "options": [
+          "Technological evaluation of cloud platform network throughput.",
+          "Information governance, security, and data protection requirements.",
+          "Supplier relationship management with cloud platform vendors.",
+          "Organizational cultural alignment regarding team communication."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "partners-suppliers": {
+    "quizId": "partners-suppliers",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "partners-suppliers-q1",
+        "text": "A software company co-develops a platform alongside a tech firm. Both organizations share intellectual property ownership, financial risk, and joint accountability for business outcomes. How should this relationship be classified?",
+        "options": [
+          "Supplier relationship — one firm provides tech services under a standard contract.",
+          "Customer relationship — one firm is consuming the output of the other.",
+          "Partner relationship — both entities share common goals, risks, and co-create value.",
+          "Service Consumer relationship — both parties act strictly as end-users."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "partners-suppliers-q2",
+        "text": "An enterprise hires a cloud storage vendor under a standard SLA contract with fixed per-gigabyte pricing and no shared business risk. This relationship is best classified as:",
+        "options": [
+          "A Partner relationship — both organizations benefit from the commercial arrangement.",
+          "A Supplier relationship — goods or services are delivered under formal contractual terms.",
+          "A Co-creation relationship — the vendor actively shapes internal business strategy.",
+          "A Joint Venture — both organizations share market exposure."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "value-streams-processes": {
+    "quizId": "value-streams-processes",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "value-streams-processes-q1",
+        "text": "A practitioner maps every step required from the moment a user submits a laptop request until the configured device is delivered to their desk. What is being mapped?",
+        "options": [
+          "A Process — a set of interrelated activities transforming inputs into outputs.",
+          "A Value Stream — the end-to-end journey of activities that creates value from demand.",
+          "A Governance Framework — internal policies governing hardware procurement.",
+          "A Service Level Agreement — performance targets for device provisioning."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "value-streams-processes-q2",
+        "text": "An IT team maintains a structured set of activities for receiving, evaluating, approving, and scheduling software changes, complete with defined inputs, outputs, and roles. This sequence is best described as:",
+        "options": [
+          "A Value Stream spanning demand intake to customer value realization.",
+          "A Process — a set of interrelated activities that convert inputs into outputs.",
+          "A Guiding Principle applied to IT operations.",
+          "A Service Value Chain activity."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "pestle-hub": {
+    "quizId": "pestle-hub",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "pestle-hub-q1",
+        "text": "The EU General Data Protection Regulation (GDPR) mandates changes to how an enterprise stores personal customer data in its ITSM tool. Which PESTLE factor directly constrains the Information & Technology dimension here?",
+        "options": [
+          "Political — government directives altering executive priorities.",
+          "Economic — compliance costs impacting departmental budgets.",
+          "Legal — regulatory compliance requirements dictating data processing and storage rules.",
+          "Social — shifting public attitudes toward data privacy."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "pestle-hub-q2",
+        "text": "A global health emergency forces an enterprise to transition its entire staff to remote work within 72 hours, altering organizational work patterns. Which PESTLE factor drove this impact on the Organizations & People dimension?",
+        "options": [
+          "Environmental — physical office conditions shifted.",
+          "Technological — new remote collaboration tools were required.",
+          "Social — a widespread societal event altered working norms and behaviors.",
+          "Economic — financial emergency funds were activated."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "focus-on-value": {
+    "quizId": "focus-on-value",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "focus-on-value-q1",
+        "text": "A DevOps team spends three months building an automated reporting engine. Upon completion, a service review reveals that no stakeholder ever requested or used the reports. Which guiding principle was most directly violated?",
+        "options": [
+          "Optimize & Automate — the reporting workflow was automated before being proven manually.",
+          "Progress Iteratively with Feedback — releases should have occurred weekly.",
+          "Focus on Value — effort was expended without verifying that the outcome created value for consumers.",
+          "Think & Work Holistically — the team worked in isolation without cross-functional visibility."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "focus-on-value-q2",
+        "text": "A service manager is deciding whether to implement a multi-stage approval workflow. Applying the 'Focus on Value' principle, which question should be asked first?",
+        "options": [
+          "'Is this approval workflow recommended by industry ITIL frameworks?'",
+          "'Does this workflow directly or indirectly create value for the customer, user, or sponsor?'",
+          "'Can this approval process be fully automated before deployment?'",
+          "'Have we evaluated all external PESTLE constraints relevant to this process?'"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "start-where-you-are": {
+    "quizId": "start-where-you-are",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "start-where-you-are-q1",
+        "text": "A new IT Director wants to scrap the existing ITSM platform and rebuild all processes from scratch. A consultant suggests measuring current performance and analyzing existing incident logs first. Which guiding principle is the consultant advocating?",
+        "options": [
+          "Progress Iteratively with Feedback — break the replacement into smaller projects.",
+          "Start Where You Are — assess and leverage current capabilities before deciding to discard them.",
+          "Keep It Simple & Practical — existing systems are usually simpler than new software.",
+          "Think & Work Holistically — evaluate the impact across all four dimensions."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "start-where-you-are-q2",
+        "text": "Before redesigning a service request process, an analyst spends two weeks shadowing Service Desk agents and recording actual resolution times. This action demonstrates which principle?",
+        "options": [
+          "Collaborate & Promote Visibility — involving staff in decision-making.",
+          "Optimize & Automate — gathering metric baselines for future automation scripts.",
+          "Focus on Value — confirming whether the process aligns with business strategy.",
+          "Start Where You Are — observing and measuring existing state practices directly."
+        ],
+        "correctIndex": 3
+      }
+    ]
+  },
+  "progress-iteratively-feedback": {
+    "quizId": "progress-iteratively-feedback",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "progress-iteratively-feedback-q1",
+        "text": "An IT department attempts to migrate 500 core services to the cloud simultaneously over a single weekend. The deployment fails, triggering a 48-hour business outage. Which guiding principle was most severely violated?",
+        "options": [
+          "Keep It Simple & Practical — the technical architecture was overly complex.",
+          "Think & Work Holistically — the business impact was not fully understood.",
+          "Progress Iteratively with Feedback — the migration should have been broken into smaller phases with feedback loops.",
+          "Optimize & Automate — manual execution steps introduced errors."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "progress-iteratively-feedback-q2",
+        "text": "After deploying the initial release of a self-service portal, user metrics reveal that 80% of users cannot locate the ticket submission button. How should the project team respond under 'Progress Iteratively with Feedback'?",
+        "options": [
+          "Cancel the project and revert to the legacy email system.",
+          "Incorporate the feedback into the next iteration to adjust the user interface.",
+          "Submit an Emergency Change request to force all users to take portal training.",
+          "Mark the project as complete since the software met its technical requirements."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "collaborate-promote-visibility": {
+    "quizId": "collaborate-promote-visibility",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "collaborate-promote-visibility-q1",
+        "text": "A cybersecurity team discovers a critical server vulnerability but keeps the finding internal for two weeks while analyzing it. Unaware, the infrastructure team deploys 20 additional vulnerable servers. Which guiding principle was violated?",
+        "options": [
+          "Focus on Value — the security team's analysis did not produce business value.",
+          "Start Where You Are — the security team failed to baseline existing server counts.",
+          "Collaborate & Promote Visibility — vital risk information was hidden rather than shared transparently with affected teams.",
+          "Think & Work Holistically — the end-to-end server architecture was ignored."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "think-work-holistically": {
+    "quizId": "think-work-holistically",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "think-work-holistically-q1",
+        "text": "A database administrator optimizes database index queries to improve reporting speed. However, the change causes unexpected memory spikes that crash three unrelated application servers. Which guiding principle was neglected?",
+        "options": [
+          "Optimize & Automate — the index tuning should have been automated.",
+          "Start Where You Are — the administrator lacked baseline performance metrics.",
+          "Think & Work Holistically — changes in one component can produce unintended consequences across the entire system.",
+          "Progress Iteratively with Feedback — the index update was deployed too slowly."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "keep-it-simple-practical": {
+    "quizId": "keep-it-simple-practical",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "keep-it-simple-practical-q1",
+        "text": "A change workflow requires 12 sequential approvals, even for minor documentation edits. An audit reveals only 2 approvals are legally mandated; the other 10 were added over time 'just in case.' What does 'Keep It Simple & Practical' recommend?",
+        "options": [
+          "Automate all 12 approval steps using workflow scripts to speed execution.",
+          "Publish a comprehensive manual detailing all 12 approval steps for transparency.",
+          "Eliminate the 10 non-value-adding approvals, retaining only steps that serve a clear purpose.",
+          "Reclassify all documentation edits as Emergency Changes to bypass approval rules."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "keep-it-simple-practical-q2",
+        "text": "An IT department creates an incident taxonomy containing 47 main categories and 12 sub-categories. Support agents frequently select wrong options, causing tickets to be misrouted. What does 'Keep It Simple & Practical' suggest?",
+        "options": [
+          "Mandate a formal 3-day training course on the 47 categories for all agents.",
+          "Implement AI classification to guess categories without altering the taxonomy.",
+          "Simplify the taxonomy to the minimum number of categories needed to route tickets effectively.",
+          "Adopt a secondary taxonomy framework to run alongside the existing one."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "optimize-automate": {
+    "quizId": "optimize-automate",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "optimize-automate-q1",
+        "text": "An IT team automates server patch deployments. However, the underlying patch schedule is flawed, resulting in patches executing during peak business hours and causing service disruptions. Which guiding principle rule was breached?",
+        "options": [
+          "Progress Iteratively with Feedback — patches should be deployed one server per month.",
+          "Optimize & Automate — the process was automated before being optimized to remove defects.",
+          "Start Where You Are — existing patch management software was not evaluated.",
+          "Think & Work Holistically — patch management does not affect service availability."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "optimize-automate-q2",
+        "text": "Before building an automated ticket assignment system, a team analyzes routing rules, removes redundant steps, and condenses 30 routing paths down to 6. Only then do they write the automation logic. This demonstrates correct application of which principle?",
+        "options": [
+          "Start Where You Are — they measured current ticket volumes.",
+          "Progress Iteratively with Feedback — they released 6 small updates.",
+          "Optimize & Automate — they streamlined and optimized the workflow prior to applying automation.",
+          "Keep It Simple & Practical — they reduced complexity without using technology."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "opportunity-demand": {
+    "quizId": "opportunity-demand",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "opportunity-demand-q1",
+        "text": "A retail CIO notes a 400% surge in support calls every holiday season. Concurrently, business units request a self-service returns feature to attract mobile users. In Service Value System (SVS) terms, the support surge represents _____ and the feature request represents _____.",
+        "options": [
+          "an Opportunity; a Risk",
+          "Demand; an Opportunity",
+          "a Problem; a Service Request",
+          "a Risk; a Change Request"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "governance": {
+    "quizId": "governance",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "governance-q1",
+        "text": "An IT steering committee reviews enterprise strategy quarterly, establishes investment priorities and policies, and measures organizational performance against strategic targets. Which sequence of Governance activities is being demonstrated?",
+        "options": [
+          "Plan → Improve → Design",
+          "Evaluate → Direct → Monitor",
+          "Engage → Plan → Improve",
+          "Assess → Authorize → Review"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "governance-q2",
+        "text": "A product team initiates an expensive infrastructure project that conflicts with the enterprise IT strategy. Governance prevents organizational misalignment by:",
+        "options": [
+          "Providing technical code reviews for the infrastructure team.",
+          "Evaluating strategic goals, directing priorities and policies, and monitoring execution against strategy.",
+          "Automatically converting project tasks into Standard Changes.",
+          "Conducting customer interviews to explain project delays."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "svc-engage": {
+    "quizId": "svc-engage",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svc-engage-q1",
+        "text": "An IT team receives a request for a new business intelligence tool. They organize stakeholder workshops, gather detailed requirements, and establish regular update channels. Which Service Value Chain (SVC) activity is primarily taking place?",
+        "options": [
+          "Plan — defining strategic vision and budget allocations.",
+          "Design & Transition — building software architecture models.",
+          "Engage — understanding stakeholder needs and fostering transparent relationships.",
+          "Improve — analyzing operational performance data."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "svc-engage-q2",
+        "text": "Users express frustration that status updates during major service outages are vague and infrequent. Which SVC activity holds primary responsibility for managing stakeholder expectations and transparency?",
+        "options": [
+          "Deliver & Support — resolving technical hardware faults.",
+          "Engage — ensuring stakeholder needs are understood and transparency is maintained.",
+          "Plan — setting strategic corporate guidelines.",
+          "Improve — auditing historical ticket metrics."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "svc-plan": {
+    "quizId": "svc-plan",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svc-plan-q1",
+        "text": "A Change Authority rejects a major cloud migration proposal due to budget constraints and security non-compliance. According to the SVC feedback loop for 'Plan', what happens next?",
+        "options": [
+          "The proposal is reclassified as an Emergency Change and deployed immediately.",
+          "The migration team escalates the rejection directly to the Service Desk.",
+          "The rejection feedback is sent to the 'Plan' activity to refine strategy, adjust budgets, and realign architectures.",
+          "The change is resubmitted as a Standard Change to bypass authorization rules."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "svc-design-transition": {
+    "quizId": "svc-design-transition",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svc-design-transition-q1",
+        "text": "Before launching a new payment system, a project team reviews release packages, conducts stakeholder sign-off reviews, and verifies that cost, quality, and timeframe targets are met. Which SVC activity does this work represent?",
+        "options": [
+          "Obtain / Build — assembling raw software modules.",
+          "Deliver & Support — managing live daily transaction processing.",
+          "Design & Transition — ensuring products continuously meet stakeholder expectations for quality, cost, and time.",
+          "Engage — collecting initial customer requirements."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "svc-obtain-build": {
+    "quizId": "svc-obtain-build",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svc-obtain-build-q1",
+        "text": "An engineering team evaluates whether to code a custom security module in-house or procure a commercial off-the-shelf security component, verifying that candidates meet agreed specifications. Which SVC activity governs this decision?",
+        "options": [
+          "Design & Transition — managing high-level service blueprints.",
+          "Plan — defining 5-year technology roadmaps.",
+          "Obtain / Build — ensuring service components are available when needed and fulfill specifications.",
+          "Engage — negotiating long-term customer contracts."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "svc-deliver-support": {
+    "quizId": "svc-deliver-support",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svc-deliver-support-q1",
+        "text": "During peak business hours, support personnel handle incoming incident tickets, fulfill user service requests, and monitor system performance. Which SVC activity is actively executing?",
+        "options": [
+          "Engage — building business relationship management plans.",
+          "Plan — setting resource allocation models.",
+          "Deliver & Support — ensuring services are delivered and supported according to agreed specifications.",
+          "Improve — identifying long-term practice enhancements."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "svc-improve": {
+    "quizId": "svc-improve",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svc-improve-q1",
+        "text": "An IT manager analyzes 6 months of telemetry and discovers that 35% of outage incidents stem from a legacy database, prompting a targeted upgrade project. Where in the SVC does this initiative originate?",
+        "options": [
+          "Engage — customer feedback forms.",
+          "Deliver & Support — daily ticket triage queues.",
+          "Improve — ensuring continual improvement of products, services, and practices across all SVS activities.",
+          "Plan — executive strategy sessions."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "continual-improvement-7steps": {
+    "quizId": "continual-improvement-7steps",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "continual-improvement-7steps-q1",
+        "text": "An IT team reaches its goal of reducing mean time to resolve (MTTR) by 40% and immediately disbands the project team. According to the 7-Step Improvement Model, which critical final step was omitted?",
+        "options": [
+          "'Where do we want to be?' — establishing baseline targets.",
+          "'Did we get there?' — confirming metric achievement.",
+          "'How do we keep the momentum going?' — embedding changes and preparing for future iterations.",
+          "'Take action' — executing the operational plan."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "continual-improvement-7steps-q2",
+        "text": "To reduce customer complaints, a team conducts surveys, measures current complaint volumes, and audits existing workflows before establishing improvement targets. Which step of the 7-Step Model is being executed?",
+        "options": [
+          "Step 1: What is the vision?",
+          "Step 2: Where are we now? (Baseline assessment)",
+          "Step 3: Where do we want to be?",
+          "Step 4: How do we get there?"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "svs-value": {
+    "quizId": "svs-value",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "svs-value-q1",
+        "text": "Following demand intake, governance alignment, planning, design, procurement, and delivery, an enterprise deploys an automated inventory system that speeds fulfillment by 60%. In ITIL 4, what does this outcome represent?",
+        "options": [
+          "A completed Normal Change authorization.",
+          "An executed Deliver & Support task.",
+          "Value co-creation — the ultimate output of the Service Value System.",
+          "A closed Continual Improvement Register item."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "incident-management": {
+    "quizId": "incident-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "incident-management-q1",
+        "text": "Users experience email delays for three days. Support implements a temporary DNS rerouting workaround to restore normal email delivery while the underlying cause remains unknown. This workaround aligns with which ITIL concept?",
+        "options": [
+          "A Standard Change — pre-approved remediation procedure.",
+          "Problem Management — investigating technical root causes.",
+          "Incident Management — restoring normal service operation as quickly as possible.",
+          "Service Level Management — tracking SLA breach penalties."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "incident-management-q2",
+        "text": "A severe database outage is resolved by restarting servers. Six months later, the exact same outage occurs again. A technician notes 'we fixed this same issue before.' Which ITIL practice failed?",
+        "options": [
+          "Incident Management — the ticket was improperly categorized.",
+          "Service Level Management — no SLA was defined for database uptime.",
+          "Problem Management — root cause was never identified and permanently remediated to prevent recurrence.",
+          "Change Enablement — server restarts were unauthorized."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "problem-management": {
+    "quizId": "problem-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "problem-management-q1",
+        "text": "Support identifies 80 incidents occurring after an OS update. They document the pattern and initiate a root cause investigation, though no resolution exists yet. What record has been established?",
+        "options": [
+          "A Known Error and a Change Request.",
+          "A Problem record — a Known Error requires a confirmed root cause and/or workaround.",
+          "An Incident Cluster and an Emergency Change.",
+          "A Service Request."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "problem-management-q2",
+        "text": "Engineers identify a router firmware bug causing packet loss. They cannot patch it immediately, but devise a rerouting rule that restores performance and document the bug alongside the workaround. The documented bug is now classified as a:",
+        "options": [
+          "Standard Change.",
+          "Unresolved Incident.",
+          "Known Error — root cause identified, workaround documented, permanent fix pending.",
+          "Service Request."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "change-enablement": {
+    "quizId": "change-enablement",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "change-enablement-q1",
+        "text": "A CI/CD pipeline automatically runs automated tests before deploying code updates to production. If tests pass, deployment occurs without human approval. In ITIL 4, how is this change categorized?",
+        "options": [
+          "Emergency Change — automated scripts bypass human review.",
+          "Normal Change — human risk evaluation is mandatory.",
+          "Standard Change — low-risk, pre-authorized change following a strict automated procedure.",
+          "Unauthorized Change — all changes require manual CAB sign-off."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "change-enablement-q2",
+        "text": "A major update to a core banking system requires regulatory and technical risk evaluation. Rather than waiting for a weekly CAB, an Architecture Review Board convenes within 48 hours to assess and authorize it. This reflects:",
+        "options": [
+          "An Emergency Change implementation.",
+          "ITIL 4 guidance to assign Change Authorities based on change type and risk level, rather than relying solely on a centralized CAB.",
+          "A Standard Change workflow.",
+          "A violation of ITIL governance."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "service-desk": {
+    "quizId": "service-desk",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "service-desk-q1",
+        "text": "A user emails a technician directly to fix a printer. The technician resolves it without logging a ticket. Months later, the printer fails again and no record of past maintenance exists. What is the main operational risk?",
+        "options": [
+          "A Warranty SLA breach.",
+          "Loss of service history, preventing incident pattern analysis and root cause identification.",
+          "Improper Tier 2 escalation.",
+          "Failure to follow PESTLE compliance guidelines."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "service-desk-q2",
+        "text": "A Service Desk manager notes low customer empathy ratings despite rapid ticket closing times. According to ITIL 4, how should the Service Desk address this?",
+        "options": [
+          "Reduce handle times further.",
+          "Automate all user interactions using chatbots.",
+          "Develop empathy, communication, and customer service skills alongside technical capabilities.",
+          "Reassign low-empathy agents to infrastructure roles."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "service-level-management": {
+    "quizId": "service-level-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "service-level-management-q1",
+        "text": "An SLA mandates 99.5% uptime. At year-end, metrics show 99.6% availability, yet customer satisfaction scores are at an all-time low. Which SLM pitfall does this scenario illustrate?",
+        "options": [
+          "Improper SLA calculation methodology.",
+          "Unrealistic customer expectations.",
+          "Relying solely on technical system metrics (the 'watermelon SLA' effect) instead of measuring true customer experience.",
+          "Missing Operational Level Agreements (OLAs)."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "continual-improvement-practice": {
+    "quizId": "continual-improvement-practice",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "continual-improvement-practice-q1",
+        "text": "An organization establishes a dedicated team to maintain a Continual Improvement Register (CIR), evaluate improvement ideas, and track progress across all SVS components. This describes:",
+        "options": [
+          "The Governance body.",
+          "The Service Desk.",
+          "The Continual Improvement practice.",
+          "Problem Management."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "service-request-management": {
+    "quizId": "service-request-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "service-request-management-q1",
+        "text": "User A reports: 'My laptop cannot connect to the Wi-Fi.' User B submits: 'Please order a standard laptop dock for my workstation.' How are these classified?",
+        "options": [
+          "Both are Incidents.",
+          "Both are Service Requests.",
+          "User A = Incident (unplanned service disruption); User B = Service Request (routine request for service action).",
+          "User A = Problem; User B = Incident."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "information-security": {
+    "quizId": "information-security",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "information-security-q1",
+        "text": "A hospital IT team plans to grant all employees full read/write access to patient medical records to speed up care. A security advisor objects. Which core principle supports the objection?",
+        "options": [
+          "Availability.",
+          "Integrity.",
+          "Principle of Least Privilege — users should only have the access necessary to perform their role, protecting confidentiality and integrity.",
+          "Warranty."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "information-security-q2",
+        "text": "An enterprise system remains fully operational and data remains unaltered. However, an unauthorized entity has been silently reading confidential financial records for weeks. Which security objective was breached?",
+        "options": [
+          "Availability.",
+          "Integrity.",
+          "Confidentiality — unauthorized viewing of sensitive information violates confidentiality.",
+          "Authenticity."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "relationship-management": {
+    "quizId": "relationship-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "relationship-management-q1",
+        "text": "An IT department meets operational SLA metrics, yet business leaders bypass IT when purchasing new technology solutions because IT is viewed merely as a technical utility. Which practice is failing?",
+        "options": [
+          "Service Level Management.",
+          "Relationship Management — failing to establish and nurture strategic links with business stakeholders.",
+          "Governance.",
+          "Supplier Management."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "supplier-management": {
+    "quizId": "supplier-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "supplier-management-q1",
+        "text": "A key network vendor breaches SLA targets for three consecutive months. The vendor account team offers excuses but no remediation plan, and IT management takes no contractual enforcement action. Which practice is underperforming?",
+        "options": [
+          "Service Configuration Management.",
+          "Service Level Management.",
+          "Supplier Management — failing to manage vendor performance to ensure quality service delivery.",
+          "Continual Improvement."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "it-asset-management": {
+    "quizId": "it-asset-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "it-asset-management-q1",
+        "text": "A software audit reveals an organization pays for 800 software licenses but only uses 340, while 12 retired servers remain on paid vendor support contracts. Which practice should prevent this waste?",
+        "options": [
+          "Service Configuration Management.",
+          "Monitoring & Event Management.",
+          "IT Asset Management — managing asset lifecycles to maximize value and control costs.",
+          "Change Enablement."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "it-asset-management-q2",
+        "text": "A software developer installs unapproved software on a corporate laptop. A vendor compliance audit results in a $200,000 fine. Which ITAM failure led to this fine?",
+        "options": [
+          "Lack of developer ITIL training.",
+          "Lack of full lifecycle control and visibility over software assets on enterprise devices.",
+          "Change Enablement approval delays.",
+          "Service Desk ticket logging errors."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  "monitoring-event-management": {
+    "quizId": "monitoring-event-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "monitoring-event-management-q1",
+        "text": "At 2:00 AM, server CPU usage reaches 95%. No automated alert is triggered because thresholds were never set. At 9:00 AM, the server crashes during business operations. What was lacking in Monitoring & Event Management?",
+        "options": [
+          "Incident escalation speed.",
+          "Proper event threshold configuration to detect state changes and trigger timely alerts.",
+          "Problem Management root cause analysis.",
+          "Change Enablement capacity approval."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "monitoring-event-management-q2",
+        "text": "A monitoring system fires 15,000 alerts daily, but only 40 require action. Overwhelmed operators begin ignoring alerts entirely. What issue does this represent?",
+        "options": [
+          "Alert fatigue due to inadequate event filtering and categorization.",
+          "A Warranty SLA breach.",
+          "An Incident Management backlog.",
+          "A Governance policy failure."
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  "release-management": {
+    "quizId": "release-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "release-management-q1",
+        "text": "A new feature is deployed to production servers but locked behind a feature toggle. It will remain hidden until launched during a marketing event next month. When does the Release take place?",
+        "options": [
+          "When code is committed to the repository.",
+          "When binaries are deployed to production servers.",
+          "When the feature toggle is enabled, making functionality available to users.",
+          "When the first user executes the feature."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "deployment-management": {
+    "quizId": "deployment-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "deployment-management-q1",
+        "text": "An engineering team moves new containerized microservices to production servers during maintenance. The software is live on servers, but feature flags keep it hidden from users. What has occurred?",
+        "options": [
+          "Both Deployment and Release are complete.",
+          "Release is complete, but Deployment is pending.",
+          "Deployment is complete (technical components moved to live environment), but Release is pending (functionality not yet accessible to users).",
+          "Neither Deployment nor Release occurred."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  "service-configuration-management": {
+    "quizId": "service-configuration-management",
+    "passingThreshold": 1,
+    "questions": [
+      {
+        "id": "service-configuration-management-q1",
+        "text": "A core application fails because an underlying database driver was decommissioned without notifying the application team. The dependency was not recorded in any system. Which practice failed?",
+        "options": [
+          "IT Asset Management.",
+          "Change Enablement.",
+          "Service Configuration Management — failing to maintain accurate Configuration Item (CI) relationships in the CMDB.",
+          "Release Management."
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "service-configuration-management-q2",
+        "text": "During a major outage, technicians spend 3 hours identifying which services rely on a faulty network switch because CMDB records were out of date. What was the primary cause of this delay?",
+        "options": [
+          "Incident Management escalation delays.",
+          "Monitoring & Event Management alert delays.",
+          "Service Configuration Management failure — stale CMDB data left dependency information unavailable when needed.",
+          "IT Asset Management tracking errors."
+        ],
+        "correctIndex": 2
+      }
+    ]
+  }
+}

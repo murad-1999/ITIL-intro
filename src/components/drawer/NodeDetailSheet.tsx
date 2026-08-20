@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRoadmapStore, getNodeStatus } from '../../store/useRoadmapStore';
 import rawRoadmapData from '../../data/itil-roadmap.json';
+import rawQuizzesData from '../../data/quizzes.json';
 import { 
   X, 
   CheckCircle, 
@@ -17,6 +18,117 @@ import {
 } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { clsx } from 'clsx';
+
+interface Question {
+  id: string;
+  text: string;
+  options: string[];
+  correctIndex: number;
+}
+
+interface QuizData {
+  quizId: string;
+  passingThreshold: number;
+  questions: Question[];
+}
+
+const NodeQuiz = ({ nodeId }: { nodeId: string }) => {
+  const quiz: QuizData | undefined = (rawQuizzesData as Record<string, QuizData>)[nodeId];
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
+
+  useEffect(() => {
+    setCurrentQuestionIndex(0);
+    setSelectedAnswers({});
+  }, [nodeId]);
+
+  if (!quiz || !quiz.questions || quiz.questions.length === 0) {
+    return null;
+  }
+
+  const currentQuestion = quiz.questions[currentQuestionIndex];
+  const selectedOption = selectedAnswers[currentQuestionIndex];
+  const isAnswered = selectedOption !== undefined;
+
+  return (
+    <div className="my-6 p-4 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-800/60 text-slate-800 dark:text-zinc-200 space-y-4">
+      <div className="flex items-center justify-between border-b border-indigo-200 dark:border-indigo-900/60 pb-2">
+        <div className="flex items-center gap-2">
+          <HelpCircle className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+          <h4 className="text-xs font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wider">
+            Knowledge Check Quiz
+          </h4>
+        </div>
+        {quiz.questions.length > 1 && (
+          <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400">
+            Question {currentQuestionIndex + 1}/{quiz.questions.length}
+          </span>
+        )}
+      </div>
+
+      <p className="text-xs font-medium text-slate-800 dark:text-zinc-200 leading-relaxed">
+        {currentQuestion.text}
+      </p>
+
+      <div className="space-y-2">
+        {currentQuestion.options.map((opt, idx) => {
+          const isSelected = selectedOption === idx;
+          const isCorrect = idx === currentQuestion.correctIndex;
+          
+          let btnStyle = "bg-white dark:bg-zinc-900/60 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 text-slate-700 dark:text-zinc-300";
+          if (isAnswered) {
+            if (isSelected) {
+              btnStyle = isCorrect
+                ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-900 dark:text-emerald-200 font-semibold"
+                : "bg-red-50 dark:bg-red-950/40 border-red-500 text-red-900 dark:text-red-200 font-semibold";
+            } else if (isCorrect) {
+              btnStyle = "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-semibold";
+            }
+          }
+
+          return (
+            <button
+              key={idx}
+              disabled={isAnswered}
+              onClick={() => setSelectedAnswers(prev => ({ ...prev, [currentQuestionIndex]: idx }))}
+              className={twMerge(
+                clsx(
+                  "w-full text-left p-2.5 rounded-lg border text-xs transition-all flex items-center justify-between gap-2",
+                  btnStyle,
+                  isAnswered && !isSelected && !isCorrect && "opacity-60"
+                )
+              )}
+            >
+              <span className="leading-snug">{opt}</span>
+              {isAnswered && isSelected && (
+                isCorrect ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" /> : <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {quiz.questions.length > 1 && (
+        <div className="flex items-center justify-between pt-2">
+          <button
+            onClick={() => setCurrentQuestionIndex(prev => Math.max(0, prev - 1))}
+            disabled={currentQuestionIndex === 0}
+            className="text-[11px] text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-zinc-200 disabled:opacity-30 disabled:pointer-events-none"
+          >
+            &larr; Previous Question
+          </button>
+          <button
+            onClick={() => setCurrentQuestionIndex(prev => Math.min(quiz.questions.length - 1, prev + 1))}
+            disabled={currentQuestionIndex === quiz.questions.length - 1}
+            className="text-[11px] text-indigo-600 dark:text-indigo-400 font-semibold hover:text-indigo-700 dark:hover:text-indigo-300 disabled:opacity-30 disabled:pointer-events-none"
+          >
+            Next Question &rarr;
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 // Interactive Change Authority Decision Matrix Mini-Assessment for Change Enablement
 const ChangeAuthorityQuiz = () => {
@@ -264,6 +376,9 @@ export const NodeDetailSheet = () => {
               &quot;{node.summary}&quot;
             </p>
           </div>
+
+          {/* Knowledge Check Quiz for Node */}
+          <NodeQuiz nodeId={node.id} />
 
           {/* Interactive Change Authority Decision Simulator if change-enablement */}
           {node.id === 'change-enablement' && (
