@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ITIL 4 Interactive Learning Roadmap
+
+An interactive visual learning platform for exploring the ITIL 4 framework. Built with Next.js App Router, React Flow (`@xyflow/react`), and Dagre graph layout math.
+
+Visualizes the ITIL 4 Service Value System (SVS), Service Value Chain (SVC), Management Practices, Guiding Principles, and Four Dimensions with interactive nodes, detailed breakdown sheets, and practice quizzes.
+
+## Features
+
+- **Interactive Canvas Graph:** Directed node canvas with auto-layout powered by Dagre positioning. Supports zoom, pan, node search, and domain filtering.
+- **Master Grid View:** Alternative data-dense tabular view with sorting and filtering for quick reference across all ITIL topics.
+- **Detailed Practice Drawers:** In-depth sheets covering practice objectives, inputs/outputs, key activities, real-world examples, and metrics.
+- **Knowledge Quizzes:** Interactive quiz engine attached to roadmap topics for self-assessment and progress verification.
+- **Progress Tracking:** Zustand state store with local storage persistence to track completed concepts, quiz scores, and user preferences.
+- **Dark & Light Mode:** Theme toggle with system sync and persistent preference storage.
+- **Responsive Design:** Mobile-ready navigation, adaptive side drawers, and responsive graph controls.
+
+## Tech Stack
+
+- **Framework:** [Next.js 14](https://nextjs.org/) (App Router, TypeScript)
+- **Graph & Layout:** [@xyflow/react](https://reactflow.dev/) and [@dagrejs/dagre](https://github.com/dagrejs/dagre)
+- **State Management:** [Zustand](https://github.com/pmndrs/zustand)
+- **Schema Validation:** [Zod](https://zod.dev/)
+- **Styling & Icons:** [Tailwind CSS](https://tailwindcss.com/) and [Lucide React](https://lucide.dev/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18.x or later
+- npm (or yarn / pnpm / bun)
+
+### Development Setup
+
+1. Clone the repository and install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Available Scripts
+
+- `npm run dev` – Starts the local development server.
+- `npm run build` – Builds the application for production.
+- `npm run start` – Launches the production build.
+- `npm run lint` – Runs ESLint checks across source code.
+
+## Project Structure
+
+```
+src/
+├── app/                  # App Router pages and global styles
+├── components/
+│   ├── drawer/           # Node detail sheet & quiz panel
+│   ├── graph/            # XyFlow custom nodes, custom edges & canvas
+│   └── grid/             # Master Grid tabular view
+├── data/
+│   ├── itil-roadmap.json # Core ITIL nodes, connections & content
+│   └── quizzes.json      # Practice quiz questions mapped to topics
+├── store/                # Zustand global state & persistence
+└── types/                # TypeScript interface definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Roadmap content and quizzes are decoupled from rendering logic and stored as JSON:
+- `src/data/itil-roadmap.json`: Contains node metadata, domain categories, prerequisite relationships, inputs/outputs, and detail content.
+- `src/data/quizzes.json`: Contains multiple-choice questions mapped to node IDs.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment (GitHub Pages)
 
-## Learn More
+This project can be exported as a static site and hosted on GitHub Pages.
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Static Export Config
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+In `next.config.mjs`, enable static output:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  images: { unoptimized: true }
+};
 
-## Deploy on Vercel
+export default nextConfig;
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. GitHub Actions Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add `.github/workflows/deploy.yml` to automatically build and deploy on push:
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build static site
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+### 3. Repository Settings
+
+1. Navigate to **Settings > Pages** in your GitHub repository.
+2. Select **GitHub Actions** as the source.
+3. Push to `main` to trigger the build.
+

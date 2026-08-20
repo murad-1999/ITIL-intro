@@ -14,7 +14,6 @@ import {
   Eye, 
   Shield, 
   CheckCircle2, 
-  Lock,
   ChevronRight
 } from 'lucide-react';
 import { clsx } from 'clsx';

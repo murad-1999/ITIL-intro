@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  basePath: isProd ? '/ITIL-intro' : '',
   experimental: {
     webpackBuildWorker: false
   },
@@ -10,3 +17,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
