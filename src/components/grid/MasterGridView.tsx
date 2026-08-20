@@ -92,16 +92,16 @@ export function MasterGridView() {
     : allNodes;
 
   return (
-    <div className="w-full h-full border border-slate-300 dark:border-zinc-800 rounded-xl overflow-y-auto bg-slate-50 dark:bg-zinc-950 p-6 space-y-8 transition-colors">
+    <div className="w-full h-full border border-slate-300 dark:border-zinc-800 rounded-xl overflow-y-auto bg-slate-50 dark:bg-zinc-950 p-4 sm:p-6 space-y-6 sm:space-y-8 transition-colors">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-zinc-800">
         <div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            Master Syllabus Overview Grid
-            <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+          <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <span>Master Syllabus Overview Grid</span>
+            <span className="text-[10px] sm:text-xs font-mono px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
               {filteredNodes.length} / {allNodes.length} Items Listed
             </span>
           </h2>
-          <p className="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
             View, read, and track all ITIL 4 Foundation syllabus items simultaneously with 100% text clarity.
           </p>
         </div>
@@ -129,7 +129,7 @@ export function MasterGridView() {
                   <div
                     key={node.id}
                     className={clsx(
-                      "p-4 rounded-xl border-2 flex flex-col justify-between space-y-3 transition-all duration-200 relative group shadow-sm hover:shadow-md",
+                      "p-4 rounded-xl border-2 flex flex-col justify-between space-y-3 transition-all duration-300 relative group shadow-sm hover:shadow-md hover:-translate-y-0.5",
                       status === 'locked'
                         ? "bg-slate-100/70 dark:bg-zinc-900/60 border-dashed border-slate-300 dark:border-zinc-700/80 opacity-60"
                         : status === 'completed'
