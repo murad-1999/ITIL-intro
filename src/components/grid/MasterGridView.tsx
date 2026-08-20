@@ -129,15 +129,15 @@ export function MasterGridView() {
                   <div
                     key={node.id}
                     className={clsx(
-                      "p-4 rounded-xl border-2 flex flex-col justify-between space-y-3 transition-all duration-300 relative group shadow-sm hover:shadow-md hover:-translate-y-0.5",
+                      "p-4 rounded-xl border-[3px] flex flex-col justify-between space-y-3 transition-all duration-300 relative group shadow-sm hover:shadow-md hover:-translate-y-0.5",
                       status === 'locked'
-                        ? "bg-slate-100/70 dark:bg-zinc-900/60 border-dashed border-slate-300 dark:border-zinc-700/80 opacity-60"
+                        ? "bg-slate-100/70 dark:bg-zinc-900/60 border-dashed border-slate-400 dark:border-zinc-650 opacity-60"
                         : status === 'completed'
-                        ? "bg-emerald-50/50 dark:bg-emerald-950/30 border-emerald-400 dark:border-emerald-500/90 shadow-sm"
-                        : "bg-white dark:bg-zinc-900 border-slate-300 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-400 shadow-sm dark:shadow-zinc-950/50",
+                        ? "bg-emerald-50/50 dark:bg-emerald-950/30 border-green-600 dark:border-green-500 shadow-sm"
+                        : "bg-white dark:bg-zinc-900 border-slate-500 dark:border-zinc-400 hover:border-blue-600 dark:hover:border-blue-400 shadow-sm dark:shadow-zinc-950/50",
                       isSearchMatched && "ring-2 ring-amber-400 dark:ring-amber-300 shadow-amber-500/20",
                       isChangeManagerFocusMode && isFocusedNode && "ring-2 ring-blue-500 dark:ring-blue-400 shadow-blue-500/20",
-                      isFocusDimmed && "opacity-20 grayscale"
+                      isFocusDimmed && "opacity-45 grayscale"
                     )}
                   >
                     {/* Header: Badge & Status Icon */}

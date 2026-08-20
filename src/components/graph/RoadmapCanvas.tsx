@@ -183,6 +183,9 @@ const RoadmapFlow = () => {
       translateExtent={[[-1000, -1000], [9000, 5000]]}
       defaultMarkerColor={theme === 'dark' ? '#94a3b8' : '#64748b'}
       proOptions={{ hideAttribution: true }}
+      nodesDraggable={false}
+      nodesConnectable={false}
+      elementsSelectable={true}
     >
       <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dotColor} />
       <MiniMap 

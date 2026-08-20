@@ -84,10 +84,10 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
       onKeyDown={handleKeyDown}
       className={twMerge(
         clsx(
-          "w-[260px] h-[120px] p-3 rounded-xl border-[3px] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between shadow-md relative group select-none transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-950 border-slate-400 dark:border-zinc-600",
+          "w-[260px] h-[120px] p-3 rounded-xl border-[3px] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between shadow-md relative group select-none transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-950 border-slate-500 dark:border-zinc-400",
           {
-            "opacity-60 border-dashed border-slate-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/90 grayscale": nodeStatus === 'locked',
-            "border-blue-600 dark:border-blue-500 hover:scale-105 cursor-pointer": nodeStatus === 'available',
+            "opacity-60 border-dashed border-slate-400 dark:border-zinc-500 bg-zinc-50 dark:bg-zinc-950/90 grayscale": nodeStatus === 'locked',
+            "border-blue-600 dark:border-blue-400 hover:scale-105 cursor-pointer": nodeStatus === 'available',
             "border-green-600 dark:border-green-500 bg-green-50/20 dark:bg-green-950/20 cursor-pointer": nodeStatus === 'completed',
           },
           {
