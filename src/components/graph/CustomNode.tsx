@@ -45,6 +45,52 @@ const getCategoryLabel = (category: string) => {
 
 export type CustomNodeType = Node<{ node: RoadmapNode }, 'customNode'>;
 
+const getCategoryBorderClass = (category: string) => {
+  switch (category) {
+    case 'concepts':
+      return 'border-purple-500 dark:border-purple-400 hover:shadow-purple-500/10';
+    case 'dimensions':
+      return 'border-amber-500 dark:border-amber-400 hover:shadow-amber-500/10';
+    case 'guiding_principles':
+      return 'border-indigo-500 dark:border-indigo-400 hover:shadow-indigo-500/10';
+    case 'svs':
+      return 'border-rose-500 dark:border-rose-400 hover:shadow-rose-500/10';
+    case 'service_value_chain':
+      return 'border-teal-500 dark:border-teal-400 hover:shadow-teal-500/10';
+    case 'practices_detail':
+      return 'border-emerald-500 dark:border-emerald-400 hover:shadow-emerald-500/10';
+    case 'practices_overview':
+      return 'border-blue-500 dark:border-blue-400 hover:shadow-blue-500/10';
+    case 'governance':
+      return 'border-sky-500 dark:border-sky-400 hover:shadow-sky-500/10';
+    default:
+      return 'border-slate-500 dark:border-slate-400';
+  }
+};
+
+const getCategoryBadgeClass = (category: string) => {
+  switch (category) {
+    case 'concepts':
+      return 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-200';
+    case 'dimensions':
+      return 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-200';
+    case 'guiding_principles':
+      return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-200';
+    case 'svs':
+      return 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-200';
+    case 'service_value_chain':
+      return 'bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-200';
+    case 'practices_detail':
+      return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-200';
+    case 'practices_overview':
+      return 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-200';
+    case 'governance':
+      return 'bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-200';
+    default:
+      return 'bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200';
+  }
+};
+
 export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
   const node = data.node;
   const { 
@@ -62,8 +108,6 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
     node.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -79,9 +123,10 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
       onKeyDown={handleKeyDown}
       className={twMerge(
         clsx(
-          "w-[260px] h-[120px] p-3 rounded-xl border-[3px] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between shadow-md relative group select-none transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-950 border-slate-500 dark:border-zinc-400 border-blue-600 dark:border-blue-400 hover:scale-105 cursor-pointer",
+          "w-[260px] h-[120px] p-3 rounded-xl border-[3px] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between shadow-md relative group select-none transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-950 cursor-pointer hover:scale-105",
+          getCategoryBorderClass(node.category),
           {
-            "border-green-600 dark:border-green-500 bg-green-50/20 dark:bg-green-950/20 cursor-pointer": nodeStatus === 'completed',
+            "bg-emerald-50/20 dark:bg-emerald-950/10": nodeStatus === 'completed',
           },
           {
             "ring-2 ring-offset-2 ring-blue-500 dark:ring-blue-400": selected,
@@ -107,7 +152,7 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
             clsx("text-[9px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase flex items-center gap-1", 
               nodeStatus === 'completed'
                 ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200"
-                : "bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200"
+                : getCategoryBadgeClass(node.category)
             )
           )}
         >
