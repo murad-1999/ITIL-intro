@@ -1,5 +1,7 @@
 # ITIL 4 Interactive Learning Roadmap
 
+🌐 **Live Demo:** [https://murad-1999.github.io/ITIL-intro/](https://murad-1999.github.io/ITIL-intro/)
+
 An interactive visual learning platform for exploring the ITIL 4 framework. Built with Next.js App Router, React Flow (`@xyflow/react`), and Dagre graph layout math.
 
 Visualizes the ITIL 4 Service Value System (SVS), Service Value Chain (SVC), Management Practices, Guiding Principles, and Four Dimensions with interactive nodes, detailed breakdown sheets, and practice quizzes.
@@ -72,74 +74,4 @@ Roadmap content and quizzes are decoupled from rendering logic and stored as JSO
 - `src/data/itil-roadmap.json`: Contains node metadata, domain categories, prerequisite relationships, inputs/outputs, and detail content.
 - `src/data/quizzes.json`: Contains multiple-choice questions mapped to node IDs.
 
-## Deployment (GitHub Pages)
-
-This project can be exported as a static site and hosted on GitHub Pages.
-
-### 1. Static Export Config
-
-In `next.config.mjs`, enable static output:
-
-```javascript
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  images: { unoptimized: true }
-};
-
-export default nextConfig;
-```
-
-### 2. GitHub Actions Deployment
-
-Add `.github/workflows/deploy.yml` to automatically build and deploy on push:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Build static site
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-### 3. Repository Settings
-
-1. Navigate to **Settings > Pages** in your GitHub repository.
-2. Select **GitHub Actions** as the source.
-3. Push to `main` to trigger the build.
 
