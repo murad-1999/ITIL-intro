@@ -186,6 +186,9 @@ const RoadmapFlow = () => {
       nodesDraggable={false}
       nodesConnectable={false}
       elementsSelectable={true}
+      zoomOnPinch={true}
+      zoomOnDoubleClick={true}
+      panOnDrag={true}
     >
       <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dotColor} />
       <MiniMap 
@@ -208,7 +211,7 @@ const RoadmapFlow = () => {
 
 export const RoadmapCanvas = () => {
   return (
-    <div className="w-full h-full border border-slate-300 dark:border-zinc-800 rounded-xl overflow-hidden bg-slate-200/50 dark:bg-zinc-950 relative transition-colors">
+    <div className="w-full h-full border border-slate-300 dark:border-zinc-800 rounded-xl overflow-hidden bg-slate-200/50 dark:bg-zinc-950 relative transition-colors touch-none">
       <ReactFlowProvider>
         <RoadmapFlow />
       </ReactFlowProvider>
