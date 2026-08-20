@@ -324,18 +324,52 @@ export default function Home() {
             </div>
 
             <div className="hidden md:flex absolute bottom-8 left-8 p-3 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-md rounded-xl border border-slate-200 dark:border-zinc-800 text-[10px] space-y-1.5 shadow-lg flex-col pointer-events-none transition-colors">
+              <span className="font-bold text-slate-800 dark:text-zinc-300 uppercase tracking-wider mb-1">Syllabus Categories</span>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-purple-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">Key Concepts</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-amber-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">4 Dimensions</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-indigo-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">Guiding Principles</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-rose-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">SVS</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-teal-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">Value Chain</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-sky-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">Governance</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-emerald-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">Practices Detail</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-sm bg-blue-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-zinc-400">Practices Overview</span>
+                </div>
+              </div>
+
+              <div className="w-full h-px bg-slate-200 dark:bg-zinc-800 my-1" />
+
               <span className="font-bold text-slate-800 dark:text-zinc-300 uppercase tracking-wider mb-1">Status Key</span>
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded bg-slate-300 dark:bg-zinc-700 border border-dashed border-slate-400 dark:border-zinc-500" />
-                <span className="text-slate-600 dark:text-zinc-400">Locked (Prerequisites missing)</span>
+                <div className="w-2.5 h-2.5 rounded-sm bg-slate-350 dark:bg-zinc-700 border border-slate-450 dark:border-zinc-500" />
+                <span className="text-slate-600 dark:text-zinc-400">Incomplete (Color coded outline)</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded bg-blue-500" />
-                <span className="text-slate-600 dark:text-zinc-400">Available (Ready to study)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded bg-emerald-500" />
-                <span className="text-slate-600 dark:text-zinc-400">Completed</span>
+                <div className="w-2.5 h-2.5 rounded-sm bg-emerald-500 border border-emerald-600 flex items-center justify-center text-white text-[7px] font-bold">✓</div>
+                <span className="text-slate-600 dark:text-zinc-400">Completed (Green check + tint)</span>
               </div>
 
               <div className="w-full h-px bg-slate-200 dark:bg-zinc-800 my-1" />
@@ -396,17 +430,53 @@ export default function Home() {
               <div className="w-full h-px bg-slate-200 dark:bg-zinc-800" />
 
               <div className="space-y-2">
+                <span className="font-bold text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500">Syllabus Categories</span>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-purple-500 shrink-0" />
+                    <span>Concepts</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-amber-500 shrink-0" />
+                    <span>Dimensions</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-indigo-500 shrink-0" />
+                    <span>Principles</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-rose-500 shrink-0" />
+                    <span>SVS</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-teal-500 shrink-0" />
+                    <span>Value Chain</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-sky-500 shrink-0" />
+                    <span>Governance</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-emerald-500 shrink-0" />
+                    <span>Practices Dtl</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-sm bg-blue-500 shrink-0" />
+                    <span>Practices Ovw</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full h-px bg-slate-200 dark:bg-zinc-800" />
+
+              <div className="space-y-2">
                 <span className="font-bold text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500">Status Key</span>
                 <div className="flex items-center gap-2 text-xs">
-                  <div className="w-2.5 h-2.5 rounded bg-slate-300 dark:bg-zinc-700 border border-dashed border-slate-400 dark:border-zinc-500" />
-                  <span>Locked (Prerequisites missing)</span>
+                  <div className="w-2.5 h-2.5 rounded-sm bg-slate-300 dark:bg-zinc-700 border border-slate-400 dark:border-zinc-500" />
+                  <span>Incomplete (Outline colored)</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
-                  <div className="w-2.5 h-2.5 rounded bg-blue-500" />
-                  <span>Available (Ready to study)</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs">
-                  <div className="w-2.5 h-2.5 rounded bg-emerald-500" />
+                  <div className="w-2.5 h-2.5 rounded-sm bg-emerald-500 flex items-center justify-center text-white text-[7px] font-bold">✓</div>
                   <span>Completed</span>
                 </div>
               </div>
