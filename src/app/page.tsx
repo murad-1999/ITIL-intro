@@ -76,9 +76,6 @@ export default function Home() {
           <div className="min-w-0">
             <h1 className="text-sm sm:text-lg font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-zinc-200 dark:to-zinc-400 bg-clip-text text-transparent flex items-center gap-1.5 flex-wrap">
               <span className="truncate">ITIL 4 Foundation Roadmap</span>
-              <span className="text-[9px] font-normal tracking-wide px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-700 rounded-full shrink-0">
-                V1.0
-              </span>
             </h1>
             <p className="text-[10px] sm:text-xs text-slate-500 dark:text-zinc-400 truncate hidden xs:block">Trace prerequisites, definitions, resources, and progress.</p>
           </div>
