@@ -393,8 +393,14 @@ export default function Home() {
 
         {/* Mobile Info/Legend Overlay Modal (Antigravity glassmorphic style) */}
         {mounted && hasHydrated && infoOverlayOpen && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:hidden">
-            <div className="bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg border border-slate-200/80 dark:border-zinc-800/80 rounded-2xl p-5 w-full max-w-sm space-y-4 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 text-slate-800 dark:text-zinc-200">
+          <div 
+            onClick={() => setInfoOverlayOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:hidden"
+          >
+            <div 
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg border border-slate-200/80 dark:border-zinc-800/80 rounded-2xl p-5 w-full max-w-sm space-y-4 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 text-slate-800 dark:text-zinc-200"
+            >
               <button
                 onClick={() => setInfoOverlayOpen(false)}
                 className="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-slate-250 dark:hover:bg-zinc-900 text-slate-400 hover:text-slate-700 dark:text-zinc-300 transition-colors"
