@@ -83,7 +83,7 @@ const ZoomControls = () => {
         step="0.05"
         value={zoomLevel}
         onChange={handleSliderChange}
-        className="hidden sm:block w-24 h-1.5 bg-slate-300 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600 dark:accent-blue-500 hover:accent-blue-500 transition-colors"
+        className="w-16 sm:w-24 h-1.5 bg-slate-300 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600 dark:accent-blue-500 hover:accent-blue-500 transition-colors"
         title="Zoom Slider"
       />
 
@@ -99,7 +99,7 @@ const ZoomControls = () => {
         <Plus className="w-3 h-3 md:w-3.5 md:h-3.5" />
       </button>
 
-      <div className="w-px h-4 md:h-5 bg-slate-305 dark:bg-zinc-800" />
+      <div className="w-px h-4 md:h-5 bg-slate-300 dark:bg-zinc-800" />
 
       {/* Recenter / Focus Canvas View Button (other than reset progress) */}
       <button
@@ -182,6 +182,7 @@ const RoadmapFlow = () => {
       maxZoom={2.5}
       translateExtent={[[-1000, -1000], [9000, 5000]]}
       defaultMarkerColor={theme === 'dark' ? '#94a3b8' : '#64748b'}
+      proOptions={{ hideAttribution: true }}
     >
       <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dotColor} />
       <MiniMap 

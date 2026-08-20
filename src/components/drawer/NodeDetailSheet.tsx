@@ -196,7 +196,7 @@ export const NodeDetailSheet = () => {
       <div 
         className={twMerge(
           clsx(
-            "fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-md z-50 transition-opacity duration-300",
+            "fixed inset-0 bg-black/25 dark:bg-black/40 backdrop-blur-[1px] z-50 transition-opacity duration-300",
             isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
           )
         )}
