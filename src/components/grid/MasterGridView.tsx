@@ -121,20 +121,11 @@ export function MasterGridView() {
   const { 
     completedNodeIds, 
     setSelectedNode, 
-    toggleNodeCompletion,
-    searchQuery
+    toggleNodeCompletion
   } = useRoadmapStore();
 
   const allNodes = rawRoadmapData.nodes as RoadmapNode[];
-
-  // Filter nodes if search query is active
-  const filteredNodes = searchQuery.trim()
-    ? allNodes.filter((node) =>
-        node.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        node.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        node.category.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : allNodes;
+  const filteredNodes = allNodes;
 
   return (
     <div className="w-full h-full border border-slate-300 dark:border-zinc-800 rounded-xl overflow-y-auto bg-slate-50 dark:bg-zinc-950 p-4 sm:p-6 space-y-6 sm:space-y-8 transition-colors">
@@ -167,8 +158,6 @@ export function MasterGridView() {
               {groupNodes.map((node) => {
                 const status = getNodeStatus(node.id, node.prerequisites, completedNodeIds);
 
-                const isSearchMatched = searchQuery.trim().length > 0;
-
                 return (
                   <div
                     key={node.id}
@@ -178,8 +167,7 @@ export function MasterGridView() {
                         getCategoryBorderClass(node.category),
                         {
                           "bg-emerald-50/20 dark:bg-emerald-950/10": status === 'completed',
-                        },
-                        isSearchMatched && "ring-2 ring-amber-400 dark:ring-amber-300 shadow-amber-500/20"
+                        }
                       )
                     )}
                   >

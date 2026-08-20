@@ -95,18 +95,10 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
   const node = data.node;
   const { 
     completedNodeIds, 
-    setSelectedNode,
-    searchQuery
+    setSelectedNode
   } = useRoadmapStore();
 
   const nodeStatus = getNodeStatus(node.id, node.prerequisites, completedNodeIds);
-
-  // Search match check
-  const isSearchMatched = searchQuery.trim().length > 0 && (
-    node.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    node.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    node.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -130,7 +122,6 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
           },
           {
             "ring-2 ring-offset-2 ring-blue-500 dark:ring-blue-400": selected,
-            "ring-4 ring-amber-400 dark:ring-amber-300 ring-offset-2 dark:ring-offset-zinc-950 shadow-amber-500/20 shadow-xl scale-105 z-20": isSearchMatched,
           }
         )
       )}

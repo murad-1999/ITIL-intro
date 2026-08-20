@@ -38,8 +38,6 @@ export default function Home() {
     completedNodeIds, 
     resetProgress,
     hasHydrated,
-    searchQuery,
-    setSearchQuery,
     theme,
     toggleTheme,
     viewMode,
@@ -67,14 +65,7 @@ export default function Home() {
     ? Math.round((completedNodeIds.length / rawRoadmapData.nodes.length) * 100)
     : 0;
 
-  // Search match count
-  const searchMatchCount = searchQuery.trim()
-    ? rawRoadmapData.nodes.filter((node) =>
-        node.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        node.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        node.category.toLowerCase().includes(searchQuery.toLowerCase())
-      ).length
-    : 0;
+
 
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-200">
@@ -136,31 +127,7 @@ export default function Home() {
 
             {/* Desktop Settings Tray */}
             <div className="hidden md:flex items-center gap-3">
-              {/* Search Input Bar */}
-              <div className="relative flex items-center">
-                <Search className="w-4 h-4 text-slate-400 dark:text-zinc-400 absolute left-3 pointer-events-none" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search nodes (e.g. Risk, CAB)..."
-                  className="w-48 md:w-56 bg-slate-50 dark:bg-zinc-900 border border-slate-300 dark:border-zinc-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl pl-9 pr-8 py-1.5 text-xs text-slate-800 dark:text-zinc-200 placeholder:text-slate-400 dark:placeholder:text-zinc-500 outline-none transition-all"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 p-0.5 text-slate-400 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-white rounded-md transition-colors"
-                    title="Clear search"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                )}
-                {searchQuery.trim() && (
-                  <span className="absolute right-8 text-[10px] text-amber-600 dark:text-amber-400 font-mono font-medium">
-                    {searchMatchCount}
-                  </span>
-                )}
-              </div>
+
 
 
 
@@ -218,31 +185,7 @@ export default function Home() {
       {/* Mobile Collapsible Control Tray (Glassmorphism + soft shadow) */}
       {mounted && hasHydrated && mobileMenuOpen && (
         <div className="md:hidden border-b border-slate-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-lg px-6 py-4 flex flex-col gap-4 sticky top-[57px] z-40 shadow-lg animate-in fade-in slide-in-from-top-4 duration-200">
-          {/* Search Input Bar */}
-          <div className="relative flex items-center w-full">
-            <Search className="w-4 h-4 text-slate-400 dark:text-zinc-400 absolute left-3 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search nodes (e.g. Risk, CAB, SLA)..."
-              className="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-300 dark:border-zinc-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl pl-9 pr-8 py-2 text-xs text-slate-800 dark:text-zinc-200 placeholder:text-slate-400 dark:placeholder:text-zinc-500 outline-none transition-all"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 p-0.5 text-slate-400 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-white rounded-md transition-colors"
-                title="Clear search"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-            {searchQuery.trim() && (
-              <span className="absolute right-8 text-[10px] text-amber-600 dark:text-amber-400 font-mono font-medium">
-                {searchMatchCount}
-              </span>
-            )}
-          </div>
+
 
           <div className="flex flex-wrap items-center gap-3">
 

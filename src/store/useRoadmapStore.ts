@@ -10,14 +10,12 @@ export type ViewMode = 'canvas' | 'grid';
 interface RoadmapState {
   completedNodeIds: string[];
   selectedNodeId: string | null;
-  searchQuery: string;
   theme: ThemeMode;
   viewMode: ViewMode;
   hasHydrated: boolean;
   
   setHasHydrated: (state: boolean) => void;
   setSelectedNode: (nodeId: string | null) => void;
-  setSearchQuery: (query: string) => void;
   setTheme: (theme: ThemeMode) => void;
   toggleTheme: () => void;
   setViewMode: (mode: ViewMode) => void;
@@ -30,14 +28,12 @@ export const useRoadmapStore = create<RoadmapState>()(
     (set) => ({
       completedNodeIds: [],
       selectedNodeId: null,
-      searchQuery: '',
       theme: 'dark',
       viewMode: 'canvas',
       hasHydrated: false,
       
       setHasHydrated: (state) => set({ hasHydrated: state }),
       setSelectedNode: (nodeId) => set({ selectedNodeId: nodeId }),
-      setSearchQuery: (query) => set({ searchQuery: query }),
       setTheme: (theme) => set({ theme }),
       toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
       setViewMode: (mode) => set({ viewMode: mode }),
@@ -49,7 +45,7 @@ export const useRoadmapStore = create<RoadmapState>()(
             : [...state.completedNodeIds, nodeId];
           return { completedNodeIds: newCompleted };
         }),
-      resetProgress: () => set({ completedNodeIds: [], selectedNodeId: null, searchQuery: '' }),
+      resetProgress: () => set({ completedNodeIds: [], selectedNodeId: null }),
     }),
     {
       name: 'itil-roadmap-progression',
