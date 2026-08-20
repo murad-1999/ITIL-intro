@@ -1,6 +1,6 @@
 import React from 'react';
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react';
-import { useRoadmapStore, getNodeStatus, CHANGE_MANAGER_FOCUS_NODE_IDS } from '../../store/useRoadmapStore';
+import { useRoadmapStore, getNodeStatus } from '../../store/useRoadmapStore';
 import { type RoadmapNode } from '../../types/schema';
 import { 
   BookOpen, 
@@ -12,8 +12,7 @@ import {
   Eye, 
   Shield, 
   CheckCircle2, 
-  Lock,
-  Target
+  Lock
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -52,8 +51,7 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
   const { 
     completedNodeIds, 
     setSelectedNode,
-    searchQuery, 
-    isChangeManagerFocusMode 
+    searchQuery
   } = useRoadmapStore();
 
   const nodeStatus = getNodeStatus(node.id, node.prerequisites, completedNodeIds);
@@ -65,9 +63,7 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
     node.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Focus mode check
-  const isFocusedNode = CHANGE_MANAGER_FOCUS_NODE_IDS.includes(node.id);
-  const isFocusDimmed = isChangeManagerFocusMode && !isFocusedNode;
+
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -93,8 +89,6 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
           {
             "ring-2 ring-offset-2 ring-blue-500 dark:ring-blue-400": selected,
             "ring-4 ring-amber-400 dark:ring-amber-300 ring-offset-2 dark:ring-offset-zinc-950 shadow-amber-500/20 shadow-xl scale-105 z-20": isSearchMatched,
-            "opacity-45 grayscale filter blur-[0.3px] scale-95": isFocusDimmed,
-            "ring-2 ring-blue-500 dark:ring-blue-400 shadow-blue-500/30 shadow-lg scale-105 z-10": isChangeManagerFocusMode && isFocusedNode,
           }
         )
       )}
@@ -120,9 +114,6 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
             })
           )}
         >
-          {isChangeManagerFocusMode && isFocusedNode && (
-            <Target className="w-2.5 h-2.5 text-blue-400 animate-pulse" />
-          )}
           {getCategoryLabel(node.category)}
         </span>
         
@@ -147,7 +138,7 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
       </div>
 
       <div className="flex items-center justify-between text-[8.5px] font-medium text-slate-600 dark:text-zinc-300">
-        <span>{isChangeManagerFocusMode && isFocusedNode ? 'CM Focus Node' : ''}</span>
+        <span />
         <span>{nodeStatus === 'locked' ? 'Prerequisites required' : nodeStatus === 'available' ? 'Ready to learn' : 'Completed'}</span>
       </div>
     </div>

@@ -3,19 +3,6 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 export type NodeProgressStatus = 'completed' | 'available' | 'locked';
 
-export const CHANGE_MANAGER_FOCUS_NODE_IDS = [
-  'change-enablement',
-  'release-management',
-  'deployment-management',
-  'service-configuration-management',
-  'incident-management',
-  'problem-management',
-  'it-asset-management',
-  'governance',
-  'svc-plan',
-  'svc-design-transition'
-];
-
 export type ThemeMode = 'dark' | 'light';
 
 export type ViewMode = 'canvas' | 'grid';
@@ -24,7 +11,6 @@ interface RoadmapState {
   completedNodeIds: string[];
   selectedNodeId: string | null;
   searchQuery: string;
-  isChangeManagerFocusMode: boolean;
   theme: ThemeMode;
   viewMode: ViewMode;
   hasHydrated: boolean;
@@ -32,7 +18,6 @@ interface RoadmapState {
   setHasHydrated: (state: boolean) => void;
   setSelectedNode: (nodeId: string | null) => void;
   setSearchQuery: (query: string) => void;
-  toggleChangeManagerFocusMode: () => void;
   setTheme: (theme: ThemeMode) => void;
   toggleTheme: () => void;
   setViewMode: (mode: ViewMode) => void;
@@ -46,7 +31,6 @@ export const useRoadmapStore = create<RoadmapState>()(
       completedNodeIds: [],
       selectedNodeId: null,
       searchQuery: '',
-      isChangeManagerFocusMode: false,
       theme: 'dark',
       viewMode: 'canvas',
       hasHydrated: false,
@@ -54,7 +38,6 @@ export const useRoadmapStore = create<RoadmapState>()(
       setHasHydrated: (state) => set({ hasHydrated: state }),
       setSelectedNode: (nodeId) => set({ selectedNodeId: nodeId }),
       setSearchQuery: (query) => set({ searchQuery: query }),
-      toggleChangeManagerFocusMode: () => set((state) => ({ isChangeManagerFocusMode: !state.isChangeManagerFocusMode })),
       setTheme: (theme) => set({ theme }),
       toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
       setViewMode: (mode) => set({ viewMode: mode }),
@@ -66,7 +49,7 @@ export const useRoadmapStore = create<RoadmapState>()(
             : [...state.completedNodeIds, nodeId];
           return { completedNodeIds: newCompleted };
         }),
-      resetProgress: () => set({ completedNodeIds: [], selectedNodeId: null, searchQuery: '', isChangeManagerFocusMode: false }),
+      resetProgress: () => set({ completedNodeIds: [], selectedNodeId: null, searchQuery: '' }),
     }),
     {
       name: 'itil-roadmap-progression',

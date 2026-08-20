@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useRoadmapStore, getNodeStatus, CHANGE_MANAGER_FOCUS_NODE_IDS } from '../../store/useRoadmapStore';
+import { useRoadmapStore, getNodeStatus } from '../../store/useRoadmapStore';
 import rawRoadmapData from '../../data/itil-roadmap.json';
 import { type RoadmapNode } from '../../types/schema';
 import { 
@@ -15,8 +15,7 @@ import {
   Shield, 
   CheckCircle2, 
   Lock,
-  ChevronRight,
-  Target
+  ChevronRight
 } from 'lucide-react';
 import { clsx } from 'clsx';
 
@@ -76,8 +75,7 @@ export function MasterGridView() {
     completedNodeIds, 
     setSelectedNode, 
     toggleNodeCompletion,
-    searchQuery, 
-    isChangeManagerFocusMode 
+    searchQuery
   } = useRoadmapStore();
 
   const allNodes = rawRoadmapData.nodes as RoadmapNode[];
@@ -121,8 +119,7 @@ export function MasterGridView() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {groupNodes.map((node) => {
                 const status = getNodeStatus(node.id, node.prerequisites, completedNodeIds);
-                const isFocusedNode = CHANGE_MANAGER_FOCUS_NODE_IDS.includes(node.id);
-                const isFocusDimmed = isChangeManagerFocusMode && !isFocusedNode;
+
                 const isSearchMatched = searchQuery.trim().length > 0;
 
                 return (
@@ -135,9 +132,7 @@ export function MasterGridView() {
                         : status === 'completed'
                         ? "bg-emerald-50/50 dark:bg-emerald-950/30 border-green-600 dark:border-green-500 shadow-sm"
                         : "bg-white dark:bg-zinc-900 border-slate-500 dark:border-zinc-400 hover:border-blue-600 dark:hover:border-blue-400 shadow-sm dark:shadow-zinc-950/50",
-                      isSearchMatched && "ring-2 ring-amber-400 dark:ring-amber-300 shadow-amber-500/20",
-                      isChangeManagerFocusMode && isFocusedNode && "ring-2 ring-blue-500 dark:ring-blue-400 shadow-blue-500/20",
-                      isFocusDimmed && "opacity-45 grayscale"
+                      isSearchMatched && "ring-2 ring-amber-400 dark:ring-amber-300 shadow-amber-500/20"
                     )}
                   >
                     {/* Header: Badge & Status Icon */}
@@ -150,9 +145,7 @@ export function MasterGridView() {
                           status === 'completed' && "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200"
                         )}
                       >
-                        {isChangeManagerFocusMode && isFocusedNode && (
-                          <Target className="w-2.5 h-2.5 text-blue-500 animate-pulse" />
-                        )}
+
                         {node.category.toUpperCase().replace(/_/g, ' ')}
                       </span>
 

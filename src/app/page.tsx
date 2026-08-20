@@ -40,8 +40,6 @@ export default function Home() {
     hasHydrated,
     searchQuery,
     setSearchQuery,
-    isChangeManagerFocusMode,
-    toggleChangeManagerFocusMode,
     theme,
     toggleTheme,
     viewMode,
@@ -164,19 +162,7 @@ export default function Home() {
                 )}
               </div>
 
-              {/* Change Manager Focus Mode Toggle */}
-              <button
-                onClick={toggleChangeManagerFocusMode}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all duration-200 shadow-sm ${
-                  isChangeManagerFocusMode
-                    ? 'bg-blue-50 dark:bg-blue-600/20 text-blue-700 dark:text-blue-300 border-blue-400 dark:border-blue-500/80 shadow-blue-500/10 ring-1 ring-blue-500'
-                    : 'bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 hover:text-slate-800 dark:hover:text-zinc-200'
-                }`}
-                title="Toggle Change Manager Focus Path"
-              >
-                <Target className={`w-3.5 h-3.5 ${isChangeManagerFocusMode ? 'text-blue-600 dark:text-blue-400 animate-pulse' : 'text-slate-400 dark:text-zinc-400'}`} />
-                <span>Change Manager Focus</span>
-              </button>
+
 
               {/* Theme Toggle Button (Light / Dark) */}
               <button
@@ -259,18 +245,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            {/* Change Manager Focus Mode Toggle */}
-            <button
-              onClick={toggleChangeManagerFocusMode}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-medium border transition-all duration-200 shadow-sm ${
-                isChangeManagerFocusMode
-                  ? 'bg-blue-50 dark:bg-blue-600/20 text-blue-700 dark:text-blue-300 border-blue-400 dark:border-blue-500/80 shadow-blue-500/10 ring-1 ring-blue-500'
-                  : 'bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 border-slate-200 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 hover:text-slate-800 dark:hover:text-zinc-200'
-              }`}
-            >
-              <Target className={`w-3.5 h-3.5 ${isChangeManagerFocusMode ? 'text-blue-600 dark:text-blue-400 animate-pulse' : 'text-slate-400 dark:text-zinc-400'}`} />
-              <span>Change Manager Focus</span>
-            </button>
+
 
             {/* Theme Toggle Button */}
             <button
