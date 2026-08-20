@@ -11,8 +11,7 @@ import {
   Activity, 
   Eye, 
   Shield, 
-  CheckCircle2, 
-  Lock
+  CheckCircle2
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -80,10 +79,8 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
       onKeyDown={handleKeyDown}
       className={twMerge(
         clsx(
-          "w-[260px] h-[120px] p-3 rounded-xl border-[3px] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between shadow-md relative group select-none transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-950 border-slate-500 dark:border-zinc-400",
+          "w-[260px] h-[120px] p-3 rounded-xl border-[3px] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between shadow-md relative group select-none transition-all duration-200 outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-950 border-slate-500 dark:border-zinc-400 border-blue-600 dark:border-blue-400 hover:scale-105 cursor-pointer",
           {
-            "opacity-60 border-dashed border-slate-400 dark:border-zinc-500 bg-zinc-50 dark:bg-zinc-950/90 grayscale": nodeStatus === 'locked',
-            "border-blue-600 dark:border-blue-400 hover:scale-105 cursor-pointer": nodeStatus === 'available',
             "border-green-600 dark:border-green-500 bg-green-50/20 dark:bg-green-950/20 cursor-pointer": nodeStatus === 'completed',
           },
           {
@@ -107,11 +104,11 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
       <div className="flex items-center justify-between w-full">
         <span 
           className={twMerge(
-            clsx("text-[9px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase flex items-center gap-1", {
-              "bg-slate-100 text-slate-600 dark:bg-zinc-800 dark:text-zinc-300": nodeStatus === 'locked',
-              "bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200": nodeStatus === 'available',
-              "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200": nodeStatus === 'completed',
-            })
+            clsx("text-[9px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase flex items-center gap-1", 
+              nodeStatus === 'completed'
+                ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200"
+                : "bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200"
+            )
           )}
         >
           {getCategoryLabel(node.category)}
@@ -120,8 +117,6 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
         <div className="text-slate-400 dark:text-zinc-400">
           {nodeStatus === 'completed' ? (
             <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-          ) : nodeStatus === 'locked' ? (
-            <Lock className="w-3.5 h-3.5" />
           ) : (
             getCategoryIcon(node.category)
           )}
@@ -139,7 +134,7 @@ export const CustomNode = ({ data, selected }: NodeProps<CustomNodeType>) => {
 
       <div className="flex items-center justify-between text-[8.5px] font-medium text-slate-600 dark:text-zinc-300">
         <span />
-        <span>{nodeStatus === 'locked' ? 'Prerequisites required' : nodeStatus === 'available' ? 'Ready to learn' : 'Completed'}</span>
+        <span>{nodeStatus === 'completed' ? 'Completed' : 'Ready to learn'}</span>
       </div>
     </div>
   );

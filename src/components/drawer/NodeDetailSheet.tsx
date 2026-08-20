@@ -7,7 +7,6 @@ import {
   X, 
   CheckCircle, 
   ExternalLink, 
-  Lock, 
   FileText, 
   BookOpen, 
   PlayCircle, 
@@ -165,15 +164,13 @@ export const NodeDetailSheet = () => {
 
   const status = getNodeStatus(node.id, node.prerequisites, completedNodeIds);
   const isCompleted = status === 'completed';
-  const isLocked = status === 'locked';
 
-  // Get unmet prerequisites list
-  const unmetPrereqs = node.prerequisites
-    .filter(prereqId => !completedNodeIds.includes(prereqId))
-    .map(prereqId => {
-      const prereqNode = rawRoadmapData.nodes.find(n => n.id === prereqId);
-      return { id: prereqId, title: prereqNode?.title || prereqId };
-    });
+  // Get all prerequisites list
+  const prereqs = node.prerequisites.map(prereqId => {
+    const prereqNode = rawRoadmapData.nodes.find(n => n.id === prereqId);
+    const completed = completedNodeIds.includes(prereqId);
+    return { id: prereqId, title: prereqNode?.title || prereqId, completed };
+  });
 
   const getResourceIcon = (type: string) => {
     switch (type) {
@@ -232,27 +229,31 @@ export const NodeDetailSheet = () => {
         {/* Drawer Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           
-          {/* Prerequisite Alert Panel */}
-          {isLocked && (
-            <div className="p-4 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/20 text-red-800 dark:text-red-300 flex items-start gap-3">
-              <Lock className="w-5 h-5 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+          {/* Prerequisite Mention Panel */}
+          {prereqs.length > 0 && (
+            <div className="p-4 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/10 text-slate-800 dark:text-zinc-300 flex items-start gap-3">
+              <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-red-700 dark:text-red-400">Topic Locked</h4>
-                <p className="text-xs text-red-700 dark:text-red-200/80 leading-relaxed mt-1">
-                  Complete the following prerequisites on the roadmap before marking this topic as completed:
+                <h4 className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">Suggested Prerequisites</h4>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed mt-1">
+                  This topic builds on the following syllabus items:
                 </p>
-                <ul className="list-disc list-inside mt-2 text-xs space-y-1 pl-1">
-                  {unmetPrereqs.map(prereq => (
-                    <li key={prereq.id}>
-                      <button 
-                        onClick={() => setSelectedNode(prereq.id)}
-                        className="underline hover:text-red-950 dark:hover:text-red-100 font-medium text-left"
-                      >
-                        {prereq.title}
-                      </button>
-                    </li>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {prereqs.map(prereq => (
+                    <button 
+                      key={prereq.id}
+                      onClick={() => setSelectedNode(prereq.id)}
+                      className={twMerge(
+                        "text-[11px] px-2.5 py-1 rounded-lg border transition-all font-medium",
+                        prereq.completed
+                          ? "bg-emerald-50/80 dark:bg-green-950/20 border-emerald-300 dark:border-green-800 text-emerald-800 dark:text-green-300"
+                          : "bg-white dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 hover:border-slate-300 dark:hover:border-zinc-700"
+                      )}
+                    >
+                      {prereq.title} {prereq.completed ? '✓' : ''}
+                    </button>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           )}
@@ -359,20 +360,17 @@ export const NodeDetailSheet = () => {
         <div className="p-5 border-t border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col gap-3">
           <button
             onClick={() => toggleNodeCompletion(node.id)}
-            disabled={isLocked}
             className={twMerge(
               clsx(
                 "w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold border transition-all duration-200",
                 isCompleted
                   ? "bg-emerald-50 dark:bg-green-600/20 text-emerald-700 dark:text-green-400 border-emerald-400 dark:border-green-500 hover:bg-emerald-100 dark:hover:bg-green-600/30"
-                  : isLocked
-                    ? "bg-slate-100 dark:bg-zinc-900 text-slate-400 dark:text-zinc-600 border-slate-200 dark:border-zinc-800 cursor-not-allowed"
-                    : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent hover:shadow-lg hover:shadow-blue-500/20"
+                  : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent hover:shadow-lg hover:shadow-blue-500/20"
               )
             )}
           >
             <CheckCircle className={`w-4 h-4 ${isCompleted ? 'fill-current text-emerald-600 dark:text-green-500' : ''}`} />
-            {isCompleted ? 'Mark as Incomplete' : isLocked ? 'Prerequisites Required' : 'Mark as Completed'}
+            {isCompleted ? 'Mark as Incomplete' : 'Mark as Completed'}
           </button>
           
           <button 

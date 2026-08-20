@@ -127,9 +127,7 @@ export function MasterGridView() {
                     key={node.id}
                     className={clsx(
                       "p-4 rounded-xl border-[3px] flex flex-col justify-between space-y-3 transition-all duration-300 relative group shadow-sm hover:shadow-md hover:-translate-y-0.5",
-                      status === 'locked'
-                        ? "bg-slate-100/70 dark:bg-zinc-900/60 border-dashed border-slate-400 dark:border-zinc-650 opacity-60"
-                        : status === 'completed'
+                      status === 'completed'
                         ? "bg-emerald-50/50 dark:bg-emerald-950/30 border-green-600 dark:border-green-500 shadow-sm"
                         : "bg-white dark:bg-zinc-900 border-slate-500 dark:border-zinc-400 hover:border-blue-600 dark:hover:border-blue-400 shadow-sm dark:shadow-zinc-950/50",
                       isSearchMatched && "ring-2 ring-amber-400 dark:ring-amber-300 shadow-amber-500/20"
@@ -140,9 +138,9 @@ export function MasterGridView() {
                       <span
                         className={clsx(
                           "text-[9px] font-bold px-2 py-0.5 rounded tracking-wider uppercase flex items-center gap-1.5",
-                          status === 'locked' && "bg-slate-200 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300",
-                          status === 'available' && "bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200",
-                          status === 'completed' && "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200"
+                          status === 'completed'
+                            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200"
+                            : "bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200"
                         )}
                       >
 
@@ -152,8 +150,6 @@ export function MasterGridView() {
                       <div className="flex items-center gap-2">
                         {status === 'completed' ? (
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                        ) : status === 'locked' ? (
-                          <Lock className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
                         ) : (
                           <div className="text-blue-600 dark:text-blue-400">
                             {getCategoryIcon(node.category)}
@@ -176,17 +172,14 @@ export function MasterGridView() {
                     <div className="pt-2 border-t border-slate-200/80 dark:border-zinc-800/80 flex items-center justify-between gap-2 text-xs">
                       <button
                         onClick={() => toggleNodeCompletion(node.id)}
-                        disabled={status === 'locked'}
                         className={clsx(
                           "px-2.5 py-1 rounded-lg font-medium text-[11px] transition-colors flex items-center gap-1",
                           status === 'completed'
                             ? "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-200"
-                            : status === 'locked'
-                            ? "text-slate-400 dark:text-zinc-500 cursor-not-allowed"
                             : "bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500"
                         )}
                       >
-                        {status === 'completed' ? '✓ Completed' : status === 'locked' ? 'Locked' : 'Mark Completed'}
+                        {status === 'completed' ? '✓ Completed' : 'Mark Completed'}
                       </button>
 
                       <button

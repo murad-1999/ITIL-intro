@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-export type NodeProgressStatus = 'completed' | 'available' | 'locked';
+export type NodeProgressStatus = 'completed' | 'available';
 
 export type ThemeMode = 'dark' | 'light';
 
@@ -74,6 +74,5 @@ export const getNodeStatus = (
   if (completedNodeIds.includes(nodeId)) {
     return 'completed';
   }
-  const hasUnmetPrereq = prerequisites.some((prereqId) => !completedNodeIds.includes(prereqId));
-  return hasUnmetPrereq ? 'locked' : 'available';
+  return 'available';
 };
